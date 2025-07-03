@@ -1,0 +1,330 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import { useTranslation } from "@/i18n/utils";
+
+const { t } = useTranslation("es");
+---
+
+<Layout title="CV - KiriDev" lang="es">
+  <Navbar lang="es" currentPath="/resume" />
+
+  <main class="min-h-screen pt-24 pb-16">
+    <div class="container mx-auto px-6">
+      <!-- Page Header -->
+      <div class="text-center mb-16">
+        <h1 class="text-5xl md:text-6xl font-cinzel font-bold mb-6">
+          <span
+            class="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
+          >
+            {t.resume.title}
+          </span>
+        </h1>
+        <div
+          class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto mb-8"
+        >
+        </div>
+
+        <!-- Download CV Button -->
+        <button
+          class="mmorpg-button inline-flex items-center space-x-3"
+          id="download-cv"
+        >
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            ></path>
+          </svg>
+          <span>{t.resume.download}</span>
+        </button>
+      </div>
+
+      <div class="max-w-4xl mx-auto space-y-12">
+        <!-- Professional Experience -->
+        <section class="mmorpg-card">
+          <h2
+            class="text-3xl font-cinzel font-bold text-cyan-400 mb-8 flex items-center"
+          >
+            <span class="text-3xl mr-4">⚔️</span>
+            {t.resume.sections.experience}
+          </h2>
+
+          <div class="space-y-8">
+            <!-- Experience Item -->
+            <div class="relative pl-8 border-l-2 border-cyan-400/30">
+              <div
+                class="absolute -left-2 top-0 w-4 h-4 bg-cyan-400 rounded-full glow-effect"
+              >
+              </div>
+              <div class="mb-4">
+                <h3 class="text-xl font-orbitron font-bold text-purple-400">
+                  Frontend Developer
+                </h3>
+                <p class="text-cyan-400 font-orbitron text-sm">
+                  Freelance • 2022 - Presente
+                </p>
+              </div>
+              <ul class="text-gray-300 space-y-2 font-cinzel">
+                <li>
+                  • Desarrollo de aplicaciones web modernas con React, Vue.js y
+                  TypeScript
+                </li>
+                <li>
+                  • Implementación de interfaces responsive con TailwindCSS y
+                  CSS Grid
+                </li>
+                <li>• Integración con APIs REST y GraphQL</li>
+                <li>• Optimización de rendimiento y SEO</li>
+              </ul>
+            </div>
+
+            <!-- Experience Item -->
+            <div class="relative pl-8 border-l-2 border-cyan-400/30">
+              <div
+                class="absolute -left-2 top-0 w-4 h-4 bg-purple-400 rounded-full glow-effect-secondary"
+              >
+              </div>
+              <div class="mb-4">
+                <h3 class="text-xl font-orbitron font-bold text-purple-400">
+                  Web Developer Junior
+                </h3>
+                <p class="text-cyan-400 font-orbitron text-sm">
+                  TechCorp • 2021 - 2022
+                </p>
+              </div>
+              <ul class="text-gray-300 space-y-2 font-cinzel">
+                <li>• Mantenimiento y mejora de sitios web existentes</li>
+                <li>
+                  • Colaboración en proyectos de equipo usando Git y
+                  metodologías ágiles
+                </li>
+                <li>
+                  • Implementación de features frontend según especificaciones
+                  de diseño
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education -->
+        <section class="mmorpg-card">
+          <h2
+            class="text-3xl font-cinzel font-bold text-purple-400 mb-8 flex items-center"
+          >
+            <span class="text-3xl mr-4">🎓</span>
+            {t.resume.sections.education}
+          </h2>
+
+          <div class="space-y-6">
+            <div class="relative pl-8 border-l-2 border-purple-400/30">
+              <div
+                class="absolute -left-2 top-0 w-4 h-4 bg-purple-400 rounded-full glow-effect-secondary"
+              >
+              </div>
+              <div>
+                <h3 class="text-xl font-orbitron font-bold text-cyan-400">
+                  Ingeniería en Sistemas
+                </h3>
+                <p class="text-purple-400 font-orbitron text-sm">
+                  Universidad Tecnológica • 2019 - 2023
+                </p>
+                <p class="text-gray-300 mt-2 font-cinzel">
+                  Especialización en desarrollo de software y bases de datos
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Technical Skills -->
+        <section class="mmorpg-card">
+          <h2
+            class="text-3xl font-cinzel font-bold text-yellow-400 mb-8 flex items-center"
+          >
+            <span class="text-3xl mr-4">💎</span>
+            {t.resume.sections.skills}
+          </h2>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Frontend Skills -->
+            <div>
+              <h3 class="text-lg font-orbitron font-bold text-cyan-400 mb-4">
+                Frontend
+              </h3>
+              <div class="space-y-3">
+                {
+                  [
+                    { name: "JavaScript/TypeScript", level: 90 },
+                    { name: "React.js", level: 85 },
+                    { name: "Vue.js", level: 80 },
+                    { name: "TailwindCSS", level: 95 },
+                    { name: "Astro", level: 75 },
+                  ].map((skill) => (
+                    <div>
+                      <div class="flex justify-between mb-1">
+                        <span class="font-orbitron text-sm">{skill.name}</span>
+                        <span class="font-orbitron text-xs text-gray-400">
+                          {skill.level}%
+                        </span>
+                      </div>
+                      <div class="w-full bg-slate-700 rounded-full h-2">
+                        <div
+                          class="bg-gradient-to-r from-cyan-400 to-blue-400 h-2 rounded-full skill-bar"
+                          style={`width: ${skill.level}%`}
+                        />
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+
+            <!-- Backend Skills -->
+            <div>
+              <h3 class="text-lg font-orbitron font-bold text-purple-400 mb-4">
+                Backend & Tools
+              </h3>
+              <div class="space-y-3">
+                {
+                  [
+                    { name: "Node.js", level: 70 },
+                    { name: "Express.js", level: 65 },
+                    { name: "MongoDB", level: 60 },
+                    { name: "Git/GitHub", level: 90 },
+                    { name: "Docker", level: 50 },
+                  ].map((skill) => (
+                    <div>
+                      <div class="flex justify-between mb-1">
+                        <span class="font-orbitron text-sm">{skill.name}</span>
+                        <span class="font-orbitron text-xs text-gray-400">
+                          {skill.level}%
+                        </span>
+                      </div>
+                      <div class="w-full bg-slate-700 rounded-full h-2">
+                        <div
+                          class="bg-gradient-to-r from-purple-400 to-pink-400 h-2 rounded-full skill-bar"
+                          style={`width: ${skill.level}%`}
+                        />
+                      </div>
+                    </div>
+                  ))
+                }
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="mmorpg-card">
+          <h2
+            class="text-3xl font-cinzel font-bold text-green-400 mb-8 flex items-center"
+          >
+            <span class="text-3xl mr-4">🏆</span>
+            {t.resume.sections.certifications}
+          </h2>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            {
+              [
+                {
+                  name: "JavaScript Algorithms and Data Structures",
+                  issuer: "freeCodeCamp",
+                  year: "2023",
+                },
+                {
+                  name: "Responsive Web Design",
+                  issuer: "freeCodeCamp",
+                  year: "2022",
+                },
+                {
+                  name: "React - The Complete Guide",
+                  issuer: "Udemy",
+                  year: "2023",
+                },
+                {
+                  name: "Modern JavaScript ES6+",
+                  issuer: "Platzi",
+                  year: "2022",
+                },
+              ].map((cert) => (
+                <div class="flex items-center space-x-4 p-4 bg-slate-700/50 rounded-lg border border-green-400/30">
+                  <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-400 rounded-lg flex items-center justify-center">
+                    <span class="text-slate-900 font-bold">🏆</span>
+                  </div>
+                  <div>
+                    <h3 class="font-orbitron font-bold text-green-400 text-sm">
+                      {cert.name}
+                    </h3>
+                    <p class="text-gray-400 text-xs">
+                      {cert.issuer} • {cert.year}
+                    </p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Animate sections
+    gsap.from("section", {
+      duration: 1,
+      y: 50,
+      opacity: 0,
+      stagger: 0.2,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: "section",
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    // Animate skill bars
+    const skillBars = document.querySelectorAll(".skill-bar");
+    skillBars.forEach((bar, index) => {
+      gsap.from(bar, {
+        duration: 1.5,
+        width: "0%",
+        ease: "power2.out",
+        delay: index * 0.1,
+        scrollTrigger: {
+          trigger: bar,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
+      });
+    });
+
+    // Download CV functionality
+    const downloadBtn = document.getElementById("download-cv");
+    if (downloadBtn) {
+      downloadBtn.addEventListener("click", () => {
+        // Here you would typically trigger a download of your actual CV
+        // For now, we'll just show a message
+        alert(
+          "¡Funcionalidad de descarga próximamente! Por favor contacta para obtener mi CV."
+        );
+      });
+    }
+  });
+</script>

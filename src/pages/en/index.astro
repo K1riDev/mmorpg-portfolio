@@ -3,11 +3,11 @@ import Layout from "@/layouts/Layout.astro";
 import Navbar from "@/components/Navbar.astro";
 import { useTranslation } from "@/i18n/utils";
 
-const { t } = useTranslation("es");
+const { t } = useTranslation("en");
 ---
 
-<Layout title="KiriDev - Portfolio" lang="es">
-  <Navbar lang="es" currentPath="/" />
+<Layout title="KiriDev - Portfolio" lang="en">
+  <Navbar lang="en" currentPath="/en" />
 
   <!-- Hero Section -->
   <main
@@ -109,7 +109,7 @@ const { t } = useTranslation("es");
       <!-- CTA Button -->
       <div class="mb-12">
         <a
-          href="/about"
+          href="/en/about"
           class="mmorpg-button inline-flex items-center space-x-3 text-lg"
           id="enter-realm-btn"
         >

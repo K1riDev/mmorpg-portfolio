@@ -1,0 +1,290 @@
+@import "tailwindcss";
+
+/* Custom fonts */
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap");
+
+/* CSS Variables for theme */
+:root {
+  --primary-glow: #06b6d4;
+  --secondary-glow: #8b5cf6;
+  --accent-glow: #eab308;
+  --background-primary: #0f172a;
+  --background-secondary: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+}
+
+.dark {
+  --primary-glow: #06b6d4;
+  --secondary-glow: #8b5cf6;
+  --accent-glow: #eab308;
+  --background-primary: #0f172a;
+  --background-secondary: #1e293b;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+}
+
+.light {
+  --primary-glow: #0891b2;
+  --secondary-glow: #7c3aed;
+  --accent-glow: #ca8a04;
+  --background-primary: #f8fafc;
+  --background-secondary: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+}
+
+/* Font families */
+.font-cinzel {
+  font-family: "Cinzel", serif;
+}
+
+.font-orbitron {
+  font-family: "Orbitron", monospace;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--primary-glow),
+    var(--secondary-glow)
+  );
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    var(--secondary-glow),
+    var(--primary-glow)
+  );
+}
+
+/* MMORPG-style glowing effects */
+.glow-effect {
+  filter: drop-shadow(0 0 8px var(--primary-glow))
+    drop-shadow(0 0 16px var(--primary-glow));
+}
+
+.glow-effect-secondary {
+  filter: drop-shadow(0 0 8px var(--secondary-glow))
+    drop-shadow(0 0 16px var(--secondary-glow));
+}
+
+.glow-effect-accent {
+  filter: drop-shadow(0 0 8px var(--accent-glow))
+    drop-shadow(0 0 16px var(--accent-glow));
+}
+
+/* HUD-style borders */
+.hud-border {
+  position: relative;
+  border: 2px solid var(--primary-glow);
+  background: linear-gradient(
+    135deg,
+    rgba(6, 182, 212, 0.1),
+    rgba(139, 92, 246, 0.1)
+  );
+}
+
+.hud-border::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    45deg,
+    var(--primary-glow),
+    var(--secondary-glow),
+    var(--accent-glow),
+    var(--primary-glow)
+  );
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.hud-border:hover::before {
+  opacity: 1;
+  animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* MMORPG Button styles */
+.mmorpg-button {
+  position: relative;
+  padding: 0.75rem 1.5rem;
+  font-family: "Orbitron", monospace;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(
+    135deg,
+    rgba(6, 182, 212, 0.2),
+    rgba(139, 92, 246, 0.2)
+  );
+  border: 2px solid var(--primary-glow);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.mmorpg-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.mmorpg-button:hover::before {
+  left: 100%;
+}
+
+.mmorpg-button:hover {
+  box-shadow: 0 0 20px var(--primary-glow),
+    inset 0 0 20px rgba(6, 182, 212, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Card styles with MMORPG aesthetic */
+.mmorpg-card {
+  position: relative;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(
+    135deg,
+    rgba(15, 23, 42, 0.8),
+    rgba(30, 41, 59, 0.8),
+    rgba(15, 23, 42, 0.8)
+  );
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.mmorpg-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary-glow),
+    transparent
+  );
+}
+
+.mmorpg-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--secondary-glow),
+    transparent
+  );
+}
+
+.mmorpg-card:hover {
+  border-color: var(--primary-glow);
+  box-shadow: 0 8px 32px rgba(6, 182, 212, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px);
+  transition: all 0.3s ease;
+}
+
+/* Navigation styles */
+.nav-glass {
+  background: rgba(15, 23, 42, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(6, 182, 212, 0.3);
+}
+
+/* Text glow effects */
+.text-glow {
+  text-shadow: 0 0 10px currentColor, 0 0 20px currentColor,
+    0 0 30px currentColor;
+}
+
+.text-glow-sm {
+  text-shadow: 0 0 5px currentColor, 0 0 10px currentColor;
+}
+
+/* Animations */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 5px currentColor);
+  }
+  50% {
+    filter: drop-shadow(0 0 15px currentColor)
+      drop-shadow(0 0 25px currentColor);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .mmorpg-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .mmorpg-card {
+    padding: 1rem;
+  }
+}

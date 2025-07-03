@@ -1,0 +1,131 @@
+---
+import "@/styles/global.css";
+import { type Language } from "@/i18n/translations";
+
+export interface Props {
+  title: string;
+  description?: string;
+  lang?: Language;
+}
+
+const {
+  title,
+  description = "KiriDev - Frontend Developer Portfolio",
+  lang = "es",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+
+    <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body
+    class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen text-white overflow-x-hidden"
+  >
+    <!-- Background particles/stars -->
+    <div id="particles" class="fixed inset-0 pointer-events-none z-0"></div>
+
+    <!-- Main content -->
+    <div class="relative z-10">
+      <slot />
+    </div>
+
+    <!-- Loading Screen -->
+    <div
+      id="loading-screen"
+      class="fixed inset-0 z-50 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center"
+    >
+      <div class="text-center">
+        <div class="relative inline-block">
+          <!-- Magic circle animation -->
+          <div
+            class="w-24 h-24 border-4 border-cyan-400 rounded-full animate-spin"
+          >
+          </div>
+          <div
+            class="absolute inset-2 w-16 h-16 border-4 border-purple-400 rounded-full animate-spin-reverse"
+          >
+          </div>
+          <div
+            class="absolute inset-4 w-8 h-8 border-4 border-yellow-400 rounded-full animate-pulse"
+          >
+          </div>
+        </div>
+        <p class="mt-4 text-xl font-cinzel text-cyan-400 animate-pulse">
+          Cargando el Reino...
+        </p>
+      </div>
+    </div>
+
+    <style>
+      @keyframes spin-reverse {
+        from {
+          transform: rotate(360deg);
+        }
+        to {
+          transform: rotate(0deg);
+        }
+      }
+      .animate-spin-reverse {
+        animation: spin-reverse 1s linear infinite;
+      }
+    </style>
+
+    <script>
+      // Loading screen
+      window.addEventListener("load", () => {
+        const loadingScreen = document.getElementById("loading-screen");
+        if (loadingScreen) {
+          setTimeout(() => {
+            loadingScreen.style.opacity = "0";
+            loadingScreen.style.transition = "opacity 0.5s ease-out";
+            setTimeout(() => {
+              loadingScreen.remove();
+            }, 500);
+          }, 1000);
+        }
+      });
+
+      // Particles background
+      function createParticles() {
+        const particles = document.getElementById("particles");
+        if (!particles) return;
+
+        for (let i = 0; i < 50; i++) {
+          const particle = document.createElement("div");
+          particle.className =
+            "absolute w-1 h-1 bg-cyan-400 rounded-full animate-pulse";
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.top = Math.random() * 100 + "%";
+          particle.style.animationDelay = Math.random() * 2 + "s";
+          particle.style.animationDuration = Math.random() * 3 + 2 + "s";
+          particles.appendChild(particle);
+        }
+      }
+
+      createParticles();
+
+      // Theme toggle functionality
+      function initTheme() {
+        const theme = localStorage.getItem("theme") || "dark";
+        document.documentElement.className = theme;
+      }
+
+      initTheme();
+    </script>
+  </body>
+</html>
