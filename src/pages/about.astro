@@ -120,6 +120,66 @@ const { t } = useTranslation("es");
               </div>
               <span class="font-orbitron text-xs text-gray-400">80%</span>
             </div>
+
+            <div class="flex justify-between items-center">
+              <div class="flex items-center space-x-2">
+                <div set:html={getLanguageIcon("Vue")} />
+                <span class="font-orbitron text-green-500">Vue</span>
+              </div>
+              <div class="flex-1 mx-4 bg-slate-700 rounded-full h-2">
+                <div
+                  class="bg-gradient-to-r from-green-500 to-emerald-500 h-2 rounded-full"
+                  style="width: 75%"
+                >
+                </div>
+              </div>
+              <span class="font-orbitron text-xs text-gray-400">75%</span>
+            </div>
+
+            <div class="flex justify-between items-center">
+              <div class="flex items-center space-x-2">
+                <div set:html={getLanguageIcon("Python")} />
+                <span class="font-orbitron text-blue-400">Python</span>
+              </div>
+              <div class="flex-1 mx-4 bg-slate-700 rounded-full h-2">
+                <div
+                  class="bg-gradient-to-r from-blue-400 to-indigo-400 h-2 rounded-full"
+                  style="width: 65%"
+                >
+                </div>
+              </div>
+              <span class="font-orbitron text-xs text-gray-400">65%</span>
+            </div>
+
+            <div class="flex justify-between items-center">
+              <div class="flex items-center space-x-2">
+                <div set:html={getLanguageIcon("CSS")} />
+                <span class="font-orbitron text-cyan-400">CSS</span>
+              </div>
+              <div class="flex-1 mx-4 bg-slate-700 rounded-full h-2">
+                <div
+                  class="bg-gradient-to-r from-cyan-400 to-blue-400 h-2 rounded-full"
+                  style="width: 88%"
+                >
+                </div>
+              </div>
+              <span class="font-orbitron text-xs text-gray-400">88%</span>
+            </div>
+
+            <div class="flex justify-between items-center">
+              <div class="flex items-center space-x-2">
+                <div set:html={getLanguageIcon("Astro")} />
+                <span class="font-orbitron text-purple-400">Astro</span>
+              </div>
+              <div class="flex-1 mx-4 bg-slate-700 rounded-full h-2">
+                <div
+                  class="bg-gradient-to-r from-purple-400 to-pink-400 h-2 rounded-full"
+                  style="width: 82%"
+                >
+                </div>
+              </div>
+              <span class="font-orbitron text-xs text-gray-400">82%</span>
+            </div>
           </div>
 
           <!-- Currently Learning section in character panel -->
@@ -159,7 +219,22 @@ const { t } = useTranslation("es");
               Mi Historia
             </h3>
             <p class="text-gray-300 leading-relaxed font-cinzel">
-              {t.about.description}
+              Hola, soy Oscar, un desarrollador web apasionado con título de
+              Técnico en Sistemas Microinformáticos y Redes de la Universidad de
+              Castilla-La Mancha. Me dedico al desarrollo frontend y me mantengo
+              en constante aprendizaje de las últimas tecnologías y tendencias
+              del sector.
+              <br /><br />
+              Creo firmemente en mantener un estilo de vida equilibrado, combinando
+              mi pasión por la programación con actividades físicas para mantenerme
+              saludable y enfocado. Para mí, la programación es una herramienta poderosa
+              para crear soluciones que mejoren la vida de las personas, y siempre
+              estoy dispuesto a asumir nuevos desafíos y proyectos.
+              <br /><br />
+              Me considero una persona tranquila que disfruta de la vida y valora
+              el aprendizaje continuo. Cada día trae nuevas oportunidades para crecer,
+              y estoy comprometido a entregar soluciones de alta calidad que marquen
+              una diferencia real.
             </p>
           </div>
 
@@ -175,12 +250,14 @@ const { t } = useTranslation("es");
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
               {
                 [
-                  { name: "React", icon: "React" },
-                  { name: "Vue.js", icon: "Vue" },
-                  { name: "Astro", icon: "Astro" },
+                  { name: "JavaScript", icon: "JavaScript" },
                   { name: "TypeScript", icon: "TypeScript" },
-                  { name: "TailwindCSS", icon: "TailwindCSS" },
+                  { name: "React", icon: "React" },
+                  { name: "Vue", icon: "Vue" },
                   { name: "Node.js", icon: "Node.js" },
+                  { name: "Python", icon: "Python" },
+                  { name: "CSS", icon: "CSS" },
+                  { name: "Astro", icon: "Astro" },
                 ].map((skill) => (
                   <div class="flex items-center space-x-3 p-3 rounded-lg bg-slate-700/50 hover:bg-slate-600/50 transition-colors">
                     <div
@@ -203,7 +280,9 @@ const { t } = useTranslation("es");
               {t.about.tools}
             </h3>
 
-            <div class="flex justify-center items-center gap-3 lg:gap-4 flex-wrap">
+            <div
+              class="flex justify-center items-center gap-3 lg:gap-4 flex-wrap"
+            >
               {
                 [
                   { name: "VS Code", icon: "vscode" },
@@ -225,8 +304,6 @@ const { t } = useTranslation("es");
               }
             </div>
           </div>
-
-
         </div>
       </div>
     </div>
