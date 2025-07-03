@@ -105,7 +105,6 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
         const { data, timestamp } = JSON.parse(cached);
         const oneHour = 60 * 60 * 1000;
         if (Date.now() - timestamp < oneHour) {
-          console.log('Using cached GitHub stats');
           return data;
         }
       }
@@ -284,14 +283,6 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
       totalStars,
       totalForks,
     };
-
-    console.log(`GitHub Stats for ${username}:`);
-    console.log(`- API calls made: 2 (repos + user)`); // Reducido significativamente
-    console.log(`- Repos analyzed: ${realRepos.length}`);
-    console.log(`- Total public repos: ${totalProjects}`);
-    console.log(`- First repo date: ${oldestRepoDate.toDateString()}`);
-    console.log(`- Years of experience: ${yearsOfExperience}`);
-    console.log(`- Technologies: ${Array.from(technologies).join(", ")}`);
 
     // Guardar en caché - solo en el cliente
     if (typeof window !== 'undefined' && window.localStorage) {

@@ -1,25 +1,26 @@
 # 🏰 KiriDev Portfolio - MMORPG Theme
 
-Un portfolio personal con diseño inspirado en videojuegos MMORPG, construido con Astro 5.10+ y TailwindCSS.
+Un portfolio personal con diseño inspirado en videojuegos MMORPG, construido con Astro 5.10+ y TailwindCSS 4.
 
 ## ✨ Características
 
 - 🎮 **Diseño MMORPG**: Interfaz inspirada en videojuegos con efectos de brillo, HUD y estética fantástica
 - 🌍 **i18n Nativo**: Soporte completo para español e inglés usando la funcionalidad nativa de Astro
-- 🎨 **TailwindCSS**: Estilos modernos con clases personalizadas para el tema gaming
+- 🎨 **TailwindCSS 4**: Estilos modernos con clases personalizadas para el tema gaming
 - 🎬 **Animaciones GSAP**: Animaciones suaves y efectos parallax
 - 📱 **Responsive**: Diseño totalmente responsive y accesible
 - 🌓 **Tema Oscuro/Claro**: Toggle de tema con estilo de juego
 - 🔔 **Notificaciones Toast**: Sistema de notificaciones estilizado
-- � **GitHub Integration**: Muestra proyectos reales desde GitHub API
+- 🐙 **GitHub Integration**: Muestra proyectos reales desde GitHub API
+- 🚀 **Cloudflare Pages**: Desplegado en Cloudflare con SSR
 
-## �️ Stack Tecnológico
+## 🛠️ Stack Tecnológico
 
 - **Framework**: Astro v5.10+ con TypeScript
-- **Estilos**: TailwindCSS + CSS personalizado
+- **Estilos**: TailwindCSS v4 + CSS personalizado
 - **Animaciones**: GSAP + ScrollTrigger
-- **Iconos**: Lucide Astro
 - **Notificaciones**: @pheralb/toast
+- **Deployment**: Cloudflare Pages + SSR
 - **Package Manager**: pnpm
 
 ## 🚀 Instalación y Uso
@@ -74,9 +75,13 @@ src/
 ├── i18n/              # Internacionalización
 │   ├── translations.ts
 │   └── utils.ts
+├── lib/               # Librerías y utilidades
+│   ├── github.ts      # API de GitHub
+│   ├── icons.ts       # Iconos SVG temáticos
+│   └── animations.ts  # Animaciones GSAP reutilizables
 ├── styles/            # Estilos globales
 │   └── global.css
-└── utils/             # Utilidades
+└── ...
 ```
 
 ## 🎨 Diseño y Tema
@@ -130,6 +135,7 @@ pnpm dev          # Servidor de desarrollo
 pnpm build        # Build para producción
 pnpm preview      # Preview del build
 pnpm astro        # CLI de Astro
+pnpm deploy       # Deploy a Cloudflare Pages
 ```
 
 ## 📄 Páginas
@@ -170,7 +176,7 @@ Con elementos como:
 
 - **Desarrollador**: KiriDev
 - **GitHub**: [github.com/KiriDev](https://github.com/KiriDev)
+- **mail**: [contact@kiridev.me](https://contact@kiridev.me)
 
 ---
 
-⚔️ Desarrollado con pasión y magia ✨

@@ -14,6 +14,9 @@ export default defineConfig({
   output: "server",
   adapter: cloudflare(),
   integrations: [sitemap()],
+  image: {
+    service: { entrypoint: "astro/assets/services/sharp", config: {} },
+  },
   i18n: {
     defaultLocale: "es",
     locales: ["es", "en"],
