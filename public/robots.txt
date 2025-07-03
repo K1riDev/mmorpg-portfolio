@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://kiridev.dev/sitemap-index.xml
+
+# Disallow crawling of irrelevant paths (if any)
+Disallow: /api/
+Disallow: /_astro/
+
+# Allow all major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /

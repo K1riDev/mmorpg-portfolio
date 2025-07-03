@@ -1,4 +1,6 @@
 // GitHub API utilities
+import { staticGitHubData, USE_GITHUB_API } from './github-static';
+
 export interface GitHubRepo {
   id: number;
   name: string;
@@ -65,6 +67,12 @@ async function fetchGitHubAPI(url: string): Promise<Response> {
 export async function fetchGitHubRepos(
   username: string
 ): Promise<GitHubRepo[]> {
+  // En desarrollo, usar datos estáticos para evitar rate limiting
+  if (!USE_GITHUB_API) {
+    console.log('Using static GitHub data for development');
+    return staticGitHubData.featuredRepos;
+  }
+
   try {
     const response = await fetchGitHubAPI(
       `https://api.github.com/users/${username}/repos?sort=stars&per_page=50&direction=desc`
@@ -78,11 +86,18 @@ export async function fetchGitHubRepos(
     return filteredRepos;
   } catch (error) {
     console.error("Error fetching GitHub repos:", error);
-    throw error;
+    // Fallback a datos estáticos
+    return staticGitHubData.featuredRepos;
   }
 }
 
 export async function fetchGitHubUser(username: string): Promise<GitHubUser> {
+  // En desarrollo, usar datos estáticos
+  if (!USE_GITHUB_API) {
+    console.log('Using static GitHub user data for development');
+    return staticGitHubData.user;
+  }
+
   try {
     const response = await fetchGitHubAPI(`https://api.github.com/users/${username}`);
     if (!response.ok) {
@@ -91,11 +106,18 @@ export async function fetchGitHubUser(username: string): Promise<GitHubUser> {
     return await response.json();
   } catch (error) {
     console.error("Error fetching GitHub user:", error);
-    throw error;
+    // Fallback a datos estáticos
+    return staticGitHubData.user;
   }
 }
 
 export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
+  // En desarrollo, usar datos estáticos para evitar rate limiting
+  if (!USE_GITHUB_API) {
+    console.log('Using static GitHub stats for development');
+    return staticGitHubData.stats;
+  }
+
   try {
     // Verificar caché primero (válido por 1 hora) - solo en el cliente
     const cacheKey = `github-stats-${username}`;
@@ -295,27 +317,8 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
     return result;
   } catch (error) {
     console.error("Error fetching GitHub stats:", error);
-
-    // Fallback más realista basado en tu perfil real
-    return {
-      yearsOfExperience: 5, // Desde julio 2019
-      totalProjects: 39, // Tus repositorios reales
-      technologiesUsed: [
-        "JavaScript",
-        "Lua",
-        "Astro",
-        "TypeScript",
-        "CSS",
-        "HTML",
-        "C#",
-        "C++",
-        "Node.js",
-        "React",
-        "Vue.js",
-      ],
-      totalStars: 0,
-      totalForks: 0,
-    };
+    // Fallback a datos estáticos
+    return staticGitHubData.stats;
   }
 }
 

@@ -6,24 +6,127 @@ export interface Props {
   title: string;
   description?: string;
   lang?: Language;
+  image?: string;
+  type?: string;
+  canonicalURL?: string;
 }
 
 const {
   title,
-  description = "KiriDev - Frontend Developer Portfolio",
+  description = "KiriDev - Portfolio de Desarrollador Frontend especializado en experiencias web inmersivas con React, Vue, Astro y tecnologías modernas",
   lang = "es",
+  image = "/og-image.svg",
+  type = "website",
+  canonicalURL = new URL(Astro.url.pathname, Astro.site),
 } = Astro.props;
+
+// SEO data based on language
+const seoData = {
+  es: {
+    siteName: "KiriDev Portfolio",
+    author: "KiriDev",
+    keywords: "desarrollador frontend, react, vue, astro, javascript, typescript, tailwindcss, portfolio, desarrollo web, programador, españa",
+    twitterHandle: "@KiriDev",
+  },
+  en: {
+    siteName: "KiriDev Portfolio",
+    author: "KiriDev",
+    keywords: "frontend developer, react, vue, astro, javascript, typescript, tailwindcss, portfolio, web development, programmer, spain",
+    twitterHandle: "@KiriDev",
+  }
+};
+
+const currentSeo = seoData[lang];
+const fullTitle = title.includes("KiriDev") ? title : `${title} | ${currentSeo.siteName}`;
+const fullImageURL = new URL(image, Astro.site);
 ---
 
 <!doctype html>
 <html lang={lang} class="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Primary Meta Tags -->
+    <title>{fullTitle}</title>
+    <meta name="title" content={fullTitle} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={currentSeo.keywords} />
+    <meta name="author" content={currentSeo.author} />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content={lang} />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Alternate languages -->
+    <link rel="alternate" hreflang="es" href={new URL("/", Astro.site)} />
+    <link rel="alternate" hreflang="en" href={new URL("/en/", Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL("/", Astro.site)} />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.svg" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={currentSeo.siteName} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={fullImageURL} />
+    <meta property="og:image:alt" content={`${currentSeo.author} - Frontend Developer Portfolio`} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content={lang === "es" ? "es_ES" : "en_US"} />
+    {lang === "es" && <meta property="og:locale:alternate" content="en_US" />}
+    {lang === "en" && <meta property="og:locale:alternate" content="es_ES" />}
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content={currentSeo.twitterHandle} />
+    <meta name="twitter:creator" content={currentSeo.twitterHandle} />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullImageURL} />
+    <meta name="twitter:image:alt" content={`${currentSeo.author} - Frontend Developer Portfolio`} />
+
+    <!-- Additional SEO -->
+    <meta name="theme-color" content="#1f2937" />
+    <meta name="msapplication-TileColor" content="#1f2937" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+      {
+        JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Person",
+          "name": "KiriDev",
+          "jobTitle": "Frontend Developer",
+          "description": description,
+          "url": Astro.site,
+          "image": fullImageURL,
+          "sameAs": [
+            "https://github.com/K1riDev",
+            "https://linkedin.com/in/kiridev"
+          ],
+          "knowsAbout": [
+            "JavaScript",
+            "TypeScript",
+            "React",
+            "Vue.js",
+            "Astro",
+            "TailwindCSS",
+            "Frontend Development",
+            "Web Development"
+          ],
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "ES"
+          }
+        })
+      }
+    </script>
 
     <!-- Preload fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
