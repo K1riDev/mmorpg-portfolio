@@ -9,8 +9,8 @@ const { t } = useTranslation('en');
 // Obtener repositorios de GitHub con fallback
 async function getGitHubRepos(): Promise<GitHubRepo[]> {
   try {
-    // Cambia 'tu-username-github' por tu username real de GitHub
-    return await fetchGitHubRepos('tu-username-github');
+    // Username real de GitHub
+    return await fetchGitHubRepos('K1riDev');
   } catch (error) {
     // Fallback data with MMORPG theme
     return [
@@ -184,7 +184,7 @@ const repos = await getGitHubRepos();
       <!-- GitHub Profile Link -->
       <div class="text-center mt-16">
         <a 
-          href="https://github.com/your-github-username" 
+          href="https://github.com/K1riDev" 
           target="_blank" 
           rel="noopener noreferrer"
           class="mmorpg-button inline-flex items-center space-x-2 px-8 py-3"
