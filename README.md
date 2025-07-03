@@ -1,6 +1,6 @@
 # 🏰 KiriDev Portfolio - MMORPG Theme
 
-Un portfolio personal con diseño inspirado en videojuegos MMORPG, construido con Astro v3+ y TailwindCSS.
+Un portfolio personal con diseño inspirado en videojuegos MMORPG, construido con Astro 5.10+ y TailwindCSS.
 
 ## ✨ Características
 
@@ -15,7 +15,7 @@ Un portfolio personal con diseño inspirado en videojuegos MMORPG, construido co
 
 ## �️ Stack Tecnológico
 
-- **Framework**: Astro v3+ con TypeScript
+- **Framework**: Astro v5.10+ con TypeScript
 - **Estilos**: TailwindCSS + CSS personalizado
 - **Animaciones**: GSAP + ScrollTrigger
 - **Iconos**: Lucide Astro
@@ -170,7 +170,6 @@ Con elementos como:
 
 - **Desarrollador**: KiriDev
 - **GitHub**: [github.com/KiriDev](https://github.com/KiriDev)
-- **Email**: kiridev@example.com
 
 ---
 

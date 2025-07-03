@@ -2,7 +2,7 @@
 import Layout from '@/layouts/Layout.astro';
 import Navbar from '@/components/Navbar.astro';
 import { useTranslation } from '@/i18n/utils';
-import { fetchGitHubRepos, getLanguageColor, type GitHubRepo } from '@/lib/github';
+import { fetchGitHubRepos, getLanguageColor, getLanguageIcon, type GitHubRepo } from '@/lib/github';
 
 const { t } = useTranslation('en');
 
@@ -142,9 +142,12 @@ const repos = await getGitHubRepos();
               <!-- Language and Topics -->
               <div class="mb-4">
                 {project.language && (
-                  <span class="inline-block bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded text-xs font-orbitron mb-2 mr-2">
-                    {project.language}
-                  </span>
+                  <div class="flex items-center mb-3">
+                    <div class="flex items-center justify-center w-5 h-5 mr-2" style={`color: ${getLanguageColor(project.language)}`}>
+                      <Fragment set:html={getLanguageIcon(project.language)} />
+                    </div>
+                    <span class="text-yellow-400 font-orbitron text-xs">{project.language}</span>
+                  </div>
                 )}
                 {project.topics && project.topics.slice(0, 3).map((topic: string) => (
                   <span class="inline-block bg-slate-700/50 text-slate-300 px-2 py-1 rounded text-xs mr-1 mb-1">

@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Navbar from "@/components/Navbar.astro";
 import { useTranslation } from "@/i18n/utils";
+import { getLanguageIcon } from "@/lib/github";
 
 const { t } = useTranslation("es");
 ---
@@ -163,15 +164,21 @@ const { t } = useTranslation("es");
               <div class="space-y-3">
                 {
                   [
-                    { name: "JavaScript/TypeScript", level: 90 },
-                    { name: "React.js", level: 85 },
-                    { name: "Vue.js", level: 80 },
-                    { name: "TailwindCSS", level: 95 },
-                    { name: "Astro", level: 75 },
+                    { name: "JavaScript/TypeScript", level: 90, icon: "JavaScript" },
+                    { name: "React.js", level: 85, icon: "React" },
+                    { name: "Vue.js", level: 80, icon: "Vue" },
+                    { name: "TailwindCSS", level: 95, icon: "CSS" },
+                    { name: "Astro", level: 75, icon: "Astro" },
                   ].map((skill) => (
                     <div>
-                      <div class="flex justify-between mb-1">
-                        <span class="font-orbitron text-sm">{skill.name}</span>
+                      <div class="flex justify-between items-center mb-1">
+                        <div class="flex items-center space-x-2">
+                          <div
+                            class="text-cyan-400 flex-shrink-0"
+                            set:html={getLanguageIcon(skill.icon)}
+                          />
+                          <span class="font-orbitron text-sm">{skill.name}</span>
+                        </div>
                         <span class="font-orbitron text-xs text-gray-400">
                           {skill.level}%
                         </span>
@@ -185,6 +192,7 @@ const { t } = useTranslation("es");
                     </div>
                   ))
                 }
+                }
               </div>
             </div>
 
@@ -196,15 +204,21 @@ const { t } = useTranslation("es");
               <div class="space-y-3">
                 {
                   [
-                    { name: "Node.js", level: 70 },
-                    { name: "Express.js", level: 65 },
-                    { name: "MongoDB", level: 60 },
-                    { name: "Git/GitHub", level: 90 },
-                    { name: "Docker", level: 50 },
+                    { name: "Node.js", level: 70, icon: "Node.js" },
+                    { name: "Express.js", level: 65, icon: "JavaScript" },
+                    { name: "MongoDB", level: 60, icon: "MongoDB" },
+                    { name: "Git/GitHub", level: 90, icon: "Git" },
+                    { name: "Docker", level: 50, icon: "Docker" },
                   ].map((skill) => (
                     <div>
-                      <div class="flex justify-between mb-1">
-                        <span class="font-orbitron text-sm">{skill.name}</span>
+                      <div class="flex justify-between items-center mb-1">
+                        <div class="flex items-center space-x-2">
+                          <div
+                            class="text-purple-400 flex-shrink-0"
+                            set:html={getLanguageIcon(skill.icon)}
+                          />
+                          <span class="font-orbitron text-sm">{skill.name}</span>
+                        </div>
                         <span class="font-orbitron text-xs text-gray-400">
                           {skill.level}%
                         </span>
