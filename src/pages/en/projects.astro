@@ -12,7 +12,7 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
   try {
     // Username real de GitHub
     const githubRepos = await fetchGitHubRepos('K1riDev');
-    
+
     // Agregar proyectos privados destacados
     const privateProjects: GitHubRepo[] = [
       {
@@ -42,7 +42,7 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
         private: true
       }
     ];
-    
+
     // Combinar repositorios públicos y privados, luego ordenar: privados primero, luego por estrellas
     const allRepos = [...githubRepos, ...privateProjects];
     return allRepos.sort((a, b) => {
@@ -177,8 +177,8 @@ const repos = await getGitHubRepos();
 
       <!-- Projects Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {repos.map((project: GitHubRepo) => (
-          <article class="mmorpg-card group hover:scale-105 transition-all duration-300">
+        {repos.map((project: GitHubRepo, index: number) => (
+          <article class="mmorpg-card group hover:shadow-xl hover:shadow-yellow-400/20 transition-all duration-300" data-project={index}>
             <div class="p-6">
               <!-- Project Header -->
               <div class="flex items-center justify-between mb-4">
@@ -236,13 +236,13 @@ const repos = await getGitHubRepos();
                     Code
                   </a>
                 )}
-                
+
                 {project.private && (
                   <div class="flex-1 bg-gradient-to-r from-slate-600/20 to-slate-700/20 border border-slate-500/50 rounded-lg px-4 py-2 text-center text-sm text-slate-400 font-orbitron">
                     Private Project
                   </div>
                 )}
-                
+
                 {project.homepage && (
                   <a
                     href={project.homepage}
@@ -281,38 +281,46 @@ const repos = await getGitHubRepos();
 
     gsap.registerPlugin(ScrollTrigger);
 
-    // Animate project cards on scroll
-    gsap.fromTo('.mmorpg-card',
-      {
-        opacity: 0,
-        y: 50
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.1,
-        scrollTrigger: {
-          trigger: '.mmorpg-card',
-          start: 'top 80%',
-          end: 'bottom 20%',
+    document.addEventListener('DOMContentLoaded', () => {
+      // Animate project cards on scroll - usando opacity y transform sin conflictos
+      gsap.fromTo('[data-project]',
+        {
+          opacity: 0,
+          y: 30,
+          scale: 0.95
+        },
+        {
+          duration: 0.6,
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          stagger: 0.1,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: '[data-project]',
+            start: 'top 85%',
+            toggleActions: 'play none none reverse'
+          }
         }
-      }
-    );
+      );
 
-    // Add glow effect on hover
-    document.querySelectorAll('.mmorpg-card').forEach(card => {
-      card.addEventListener('mouseenter', () => {
-        gsap.to(card, {
-          boxShadow: '0 0 30px rgba(234, 179, 8, 0.3)',
-          duration: 0.3
+      // Hover animations más suaves usando solo glow effect
+      const projectCards = document.querySelectorAll('[data-project]');
+      projectCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+          gsap.to(card, {
+            duration: 0.3,
+            boxShadow: '0 20px 25px -5px rgba(251, 191, 36, 0.1), 0 10px 10px -5px rgba(251, 191, 36, 0.04)',
+            ease: 'power2.out'
+          });
         });
-      });
 
-      card.addEventListener('mouseleave', () => {
-        gsap.to(card, {
-          boxShadow: '0 0 0px rgba(234, 179, 8, 0)',
-          duration: 0.3
+        card.addEventListener('mouseleave', () => {
+          gsap.to(card, {
+            duration: 0.3,
+            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+            ease: 'power2.out'
+          });
         });
       });
     });
