@@ -1,8 +1,5 @@
 @import "tailwindcss";
 
-/* Custom fonts */
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Orbitron:wght@400;500;700;900&display=swap");
-
 /* CSS Variables for theme */
 :root {
   --primary-glow: #fbbf24;

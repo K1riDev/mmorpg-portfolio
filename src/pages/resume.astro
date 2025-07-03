@@ -273,18 +273,18 @@ const { t } = useTranslation("es");
     // Animate skill bars
     const skillBars = document.querySelectorAll(".skill-bar");
     const skillsSection = document.querySelector("section:last-child"); // La sección de skills
-    
+
     skillBars.forEach((bar, index) => {
       const element = bar as HTMLElement;
-      
+
       // Get the target width from the style attribute
-      const styleAttr = element.getAttribute('style');
+      const styleAttr = element.getAttribute("style");
       const widthMatch = styleAttr?.match(/width:\s*(\d+)%/);
-      const targetWidth = widthMatch ? widthMatch[1] + '%' : '0%';
-      
+      const targetWidth = widthMatch ? widthMatch[1] + "%" : "0%";
+
       // Set initial width to 0
       gsap.set(element, { width: "0%" });
-      
+
       // Animate to target width when skills section comes into view
       gsap.to(element, {
         duration: 1.5,
