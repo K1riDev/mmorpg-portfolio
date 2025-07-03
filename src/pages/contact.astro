@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Navbar from "@/components/Navbar.astro";
 import { useTranslation } from "@/i18n/utils";
+import { getIcon } from "@/lib/icons";
 
 const { t } = useTranslation("es");
 ---
@@ -207,7 +208,10 @@ const { t } = useTranslation("es");
               <h2
                 class="text-2xl font-cinzel font-bold text-yellow-400 mb-6 flex items-center"
               >
-                <span class="text-2xl mr-3">⚡</span>
+                <div
+                  class="w-6 h-6 mr-3 text-yellow-400"
+                  set:html={getIcon("magic")}
+                />
                 Respuesta Rápida
               </h2>
 
@@ -267,7 +271,9 @@ const { t } = useTranslation("es");
 
     // Form submission
     const form = document.getElementById("contact-form") as HTMLFormElement;
-    const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+    const submitBtn = document.getElementById(
+      "submit-btn"
+    ) as HTMLButtonElement;
     const submitText = document.getElementById("submit-text") as HTMLElement;
     const submitIcon = document.getElementById("submit-icon") as HTMLElement;
     const loadingIcon = document.getElementById("loading-icon") as HTMLElement;

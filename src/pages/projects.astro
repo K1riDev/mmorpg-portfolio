@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import Navbar from '@/components/Navbar.astro';
 import { useTranslation } from '@/i18n/utils';
 import { fetchGitHubRepos, getLanguageColor, getLanguageIcon, type GitHubRepo } from '@/lib/github';
+import { getIcon } from '@/lib/icons';
 
 const { t } = useTranslation('es');
 
@@ -119,7 +120,7 @@ const repos = await getGitHubRepos();
             <div class="flex items-start justify-between mb-4">
               <div class="flex items-center space-x-2">
                 <div class="w-8 h-8 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center">
-                  <span class="text-black text-sm font-bold">🏰</span>
+                  <div class="w-4 h-4 text-slate-800" set:html={getIcon('castle')}></div>
                 </div>
                 <h3 class="font-orbitron font-bold text-yellow-400 text-lg">{repo.name}</h3>
               </div>

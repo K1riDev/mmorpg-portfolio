@@ -3,6 +3,7 @@ import Layout from '@/layouts/Layout.astro';
 import Navbar from '@/components/Navbar.astro';
 import { useTranslation } from '@/i18n/utils';
 import { fetchGitHubRepos, getLanguageColor, getLanguageIcon, type GitHubRepo } from '@/lib/github';
+import { getIcon } from '@/lib/icons';
 
 const { t } = useTranslation('en');
 
@@ -121,13 +122,13 @@ const repos = await getGitHubRepos();
                 <div class="flex items-center space-x-2 text-slate-400 text-sm">
                   {project.stargazers_count && (
                     <span class="flex items-center space-x-1">
-                      <i class="lucide-star w-4 h-4 fill-current"></i>
+                      <div class="w-4 h-4" set:html={getIcon('star')}></div>
                       <span>{project.stargazers_count}</span>
                     </span>
                   )}
                   {project.forks_count && (
                     <span class="flex items-center space-x-1">
-                      <i class="lucide-git-fork w-4 h-4"></i>
+                      <div class="w-4 h-4" set:html={getIcon('fork')}></div>
                       <span>{project.forks_count}</span>
                     </span>
                   )}
@@ -158,23 +159,23 @@ const repos = await getGitHubRepos();
 
               <!-- Actions -->
               <div class="flex space-x-3 mt-auto">
-                <a 
-                  href={project.html_url} 
-                  target="_blank" 
+                <a
+                  href={project.html_url}
+                  target="_blank"
                   rel="noopener noreferrer"
                   class="flex-1 mmorpg-button text-center py-2 px-4 text-sm"
                 >
-                  <i class="lucide-github w-4 h-4 inline mr-2"></i>
+                  <div class="w-4 h-4 inline mr-2" set:html={getIcon('code')}></div>
                   Code
                 </a>
                 {project.homepage && (
-                  <a 
-                    href={project.homepage} 
-                    target="_blank" 
+                  <a
+                    href={project.homepage}
+                    target="_blank"
                     rel="noopener noreferrer"
                     class="flex-1 bg-slate-700/50 hover:bg-slate-600/50 text-slate-300 hover:text-white border border-slate-600 hover:border-slate-500 rounded-lg transition-all duration-300 text-center py-2 px-4 text-sm"
                   >
-                    <i class="lucide-external-link w-4 h-4 inline mr-2"></i>
+                    <div class="w-4 h-4 inline mr-2" set:html={getIcon('castle')}></div>
                     Demo
                   </a>
                 )}
@@ -186,13 +187,13 @@ const repos = await getGitHubRepos();
 
       <!-- GitHub Profile Link -->
       <div class="text-center mt-16">
-        <a 
-          href="https://github.com/K1riDev" 
-          target="_blank" 
+        <a
+          href="https://github.com/K1riDev"
+          target="_blank"
           rel="noopener noreferrer"
           class="mmorpg-button inline-flex items-center space-x-2 px-8 py-3"
         >
-          <i class="lucide-github w-5 h-5"></i>
+          <div class="w-5 h-5" set:html={getIcon('code')}></div>
           <span>{t.projects.viewAll}</span>
         </a>
       </div>
@@ -206,7 +207,7 @@ const repos = await getGitHubRepos();
     gsap.registerPlugin(ScrollTrigger);
 
     // Animate project cards on scroll
-    gsap.fromTo('.mmorpg-card', 
+    gsap.fromTo('.mmorpg-card',
       {
         opacity: 0,
         y: 50
@@ -227,16 +228,16 @@ const repos = await getGitHubRepos();
     // Add glow effect on hover
     document.querySelectorAll('.mmorpg-card').forEach(card => {
       card.addEventListener('mouseenter', () => {
-        gsap.to(card, { 
+        gsap.to(card, {
           boxShadow: '0 0 30px rgba(234, 179, 8, 0.3)',
-          duration: 0.3 
+          duration: 0.3
         });
       });
-      
+
       card.addEventListener('mouseleave', () => {
-        gsap.to(card, { 
+        gsap.to(card, {
           boxShadow: '0 0 0px rgba(234, 179, 8, 0)',
-          duration: 0.3 
+          duration: 0.3
         });
       });
     });

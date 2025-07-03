@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import Navbar from "@/components/Navbar.astro";
 import { useTranslation } from "@/i18n/utils";
 import { getLanguageIcon, getLanguageColor } from "@/lib/github";
+import { getIcon } from "@/lib/icons";
 
 const { t } = useTranslation("es");
 ---
@@ -16,13 +17,13 @@ const { t } = useTranslation("es");
       <div class="text-center mb-16">
         <h1 class="text-5xl md:text-6xl font-cinzel font-bold mb-6">
           <span
-            class="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
+            class="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent"
           >
             {t.about.title}
           </span>
         </h1>
         <div
-          class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto"
+          class="w-24 h-1 bg-gradient-to-r from-yellow-400 to-amber-500 mx-auto"
         >
         </div>
       </div>
@@ -34,12 +35,12 @@ const { t } = useTranslation("es");
             <!-- Avatar/Character -->
             <div class="w-32 h-32 mx-auto mb-6 relative">
               <div
-                class="w-full h-full rounded-full bg-gradient-to-br from-cyan-400 to-purple-500 p-1"
+                class="w-full h-full rounded-full bg-gradient-to-br from-yellow-400 to-amber-500 p-1"
               >
                 <div
                   class="w-full h-full rounded-full bg-slate-800 flex items-center justify-center"
                 >
-                  <span class="text-4xl font-orbitron font-bold text-cyan-400"
+                  <span class="text-4xl font-orbitron font-bold text-yellow-400"
                     >KD</span
                   >
                 </div>
@@ -52,10 +53,10 @@ const { t } = useTranslation("es");
               </div>
             </div>
 
-            <h2 class="text-2xl font-cinzel font-bold text-cyan-400 mb-2">
+            <h2 class="text-2xl font-cinzel font-bold text-yellow-400 mb-2">
               KiriDev
             </h2>
-            <p class="text-purple-400 font-orbitron">Frontend Developer</p>
+            <p class="text-amber-400 font-orbitron">Frontend Developer</p>
           </div>
 
           <!-- Character Stats -->
@@ -63,14 +64,14 @@ const { t } = useTranslation("es");
             <div class="flex justify-between items-center">
               <div class="flex items-center space-x-2">
                 <div
-                  class="text-cyan-400"
+                  class="text-yellow-400"
                   set:html={getLanguageIcon("JavaScript")}
                 />
-                <span class="font-orbitron text-cyan-400">JavaScript</span>
+                <span class="font-orbitron text-yellow-400">JavaScript</span>
               </div>
               <div class="flex-1 mx-4 bg-slate-700 rounded-full h-2">
                 <div
-                  class="bg-gradient-to-r from-cyan-400 to-blue-400 h-2 rounded-full"
+                  class="bg-gradient-to-r from-yellow-400 to-orange-400 h-2 rounded-full"
                   style="width: 90%"
                 >
                 </div>
@@ -81,14 +82,14 @@ const { t } = useTranslation("es");
             <div class="flex justify-between items-center">
               <div class="flex items-center space-x-2">
                 <div
-                  class="text-purple-400"
+                  class="text-amber-500"
                   set:html={getLanguageIcon("React")}
                 />
-                <span class="font-orbitron text-purple-400">React</span>
+                <span class="font-orbitron text-amber-500">React</span>
               </div>
               <div class="flex-1 mx-4 bg-slate-700 rounded-full h-2">
                 <div
-                  class="bg-gradient-to-r from-purple-400 to-pink-400 h-2 rounded-full"
+                  class="bg-gradient-to-r from-amber-500 to-yellow-500 h-2 rounded-full"
                   style="width: 85%"
                 >
                 </div>
@@ -117,14 +118,14 @@ const { t } = useTranslation("es");
             <div class="flex justify-between items-center">
               <div class="flex items-center space-x-2">
                 <div
-                  class="text-yellow-400"
+                  class="text-orange-400"
                   set:html={getLanguageIcon("TypeScript")}
                 />
-                <span class="font-orbitron text-yellow-400">TypeScript</span>
+                <span class="font-orbitron text-orange-400">TypeScript</span>
               </div>
               <div class="flex-1 mx-4 bg-slate-700 rounded-full h-2">
                 <div
-                  class="bg-gradient-to-r from-yellow-400 to-orange-400 h-2 rounded-full"
+                  class="bg-gradient-to-r from-orange-400 to-red-400 h-2 rounded-full"
                   style="width: 80%"
                 >
                 </div>
@@ -139,9 +140,9 @@ const { t } = useTranslation("es");
           <!-- Main description -->
           <div class="mmorpg-card">
             <h3
-              class="text-2xl font-cinzel font-bold text-cyan-400 mb-4 flex items-center"
+              class="text-2xl font-cinzel font-bold text-yellow-400 mb-4 flex items-center"
             >
-              <span class="text-2xl mr-3">📖</span>
+              <div class="text-yellow-400 mr-3" set:html={getIcon("scroll")} />
               Mi Historia
             </h3>
             <p class="text-gray-300 leading-relaxed font-cinzel">
@@ -152,9 +153,9 @@ const { t } = useTranslation("es");
           <!-- Skills section -->
           <div class="mmorpg-card">
             <h3
-              class="text-2xl font-cinzel font-bold text-purple-400 mb-6 flex items-center"
+              class="text-2xl font-cinzel font-bold text-amber-500 mb-6 flex items-center"
             >
-              <span class="text-2xl mr-3">⚔️</span>
+              <div class="text-amber-500 mr-3" set:html={getIcon("sword")} />
               {t.about.skills}
             </h3>
 
@@ -170,7 +171,7 @@ const { t } = useTranslation("es");
                 ].map((skill) => (
                   <div class="flex items-center space-x-3 p-3 rounded-lg bg-slate-700/50 hover:bg-slate-600/50 transition-colors">
                     <div
-                      class="text-cyan-400 flex-shrink-0"
+                      class="text-yellow-400 flex-shrink-0"
                       set:html={getLanguageIcon(skill.icon)}
                     />
                     <span class="font-orbitron text-sm">{skill.name}</span>
@@ -183,9 +184,9 @@ const { t } = useTranslation("es");
           <!-- Currently Learning -->
           <div class="mmorpg-card">
             <h3
-              class="text-2xl font-cinzel font-bold text-yellow-400 mb-6 flex items-center"
+              class="text-2xl font-cinzel font-bold text-orange-400 mb-6 flex items-center"
             >
-              <span class="text-2xl mr-3">📚</span>
+              <div class="text-orange-400 mr-3" set:html={getIcon("book")} />
               {t.about.learning}
             </h3>
 
@@ -197,8 +198,8 @@ const { t } = useTranslation("es");
                   "DevOps",
                   "System Architecture",
                 ].map((item) => (
-                  <div class="flex items-center space-x-3 p-3 rounded-lg border border-yellow-400/30 hover:border-yellow-400 transition-colors">
-                    <div class="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
+                  <div class="flex items-center space-x-3 p-3 rounded-lg border border-orange-400/30 hover:border-orange-400 transition-colors">
+                    <div class="w-2 h-2 bg-orange-400 rounded-full animate-pulse" />
                     <span class="font-orbitron text-sm">{item}</span>
                   </div>
                 ))

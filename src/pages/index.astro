@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Navbar from "@/components/Navbar.astro";
 import { useTranslation } from "@/i18n/utils";
+import { getIcon } from "@/lib/icons";
 
 const { t } = useTranslation("es");
 ---
@@ -17,16 +18,16 @@ const { t } = useTranslation("es");
     <div class="absolute inset-0 z-0">
       <!-- Floating orbs -->
       <div
-        class="absolute top-1/4 left-1/4 w-32 h-32 bg-cyan-400/20 rounded-full blur-xl animate-float"
+        class="absolute top-1/4 left-1/4 w-32 h-32 bg-yellow-400/20 rounded-full blur-xl animate-float"
       >
       </div>
       <div
-        class="absolute top-3/4 right-1/4 w-24 h-24 bg-purple-500/20 rounded-full blur-xl animate-float"
+        class="absolute top-3/4 right-1/4 w-24 h-24 bg-amber-500/20 rounded-full blur-xl animate-float"
         style="animation-delay: 1s;"
       >
       </div>
       <div
-        class="absolute top-1/2 left-3/4 w-20 h-20 bg-yellow-400/20 rounded-full blur-xl animate-float"
+        class="absolute top-1/2 left-3/4 w-20 h-20 bg-orange-400/20 rounded-full blur-xl animate-float"
         style="animation-delay: 2s;"
       >
       </div>
@@ -37,7 +38,7 @@ const { t } = useTranslation("es");
       <div class="mb-8">
         <h1 class="text-6xl md:text-8xl font-cinzel font-bold mb-4">
           <span
-            class="bg-gradient-to-r from-cyan-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent animate-pulse-glow"
+            class="bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-400 bg-clip-text text-transparent animate-pulse-glow"
           >
             {t.home.welcome}
           </span>
@@ -49,11 +50,11 @@ const { t } = useTranslation("es");
           </h2>
           <!-- Decorative lines -->
           <div
-            class="absolute -left-16 top-1/2 w-12 h-px bg-gradient-to-r from-transparent to-cyan-400"
+            class="absolute -left-16 top-1/2 w-12 h-px bg-gradient-to-r from-transparent to-yellow-400"
           >
           </div>
           <div
-            class="absolute -right-16 top-1/2 w-12 h-px bg-gradient-to-l from-transparent to-cyan-400"
+            class="absolute -right-16 top-1/2 w-12 h-px bg-gradient-to-l from-transparent to-yellow-400"
           >
           </div>
         </div>
@@ -64,8 +65,13 @@ const { t } = useTranslation("es");
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           <!-- Experience stat -->
           <div class="mmorpg-card group cursor-pointer">
-            <div class="text-3xl mb-2 text-cyan-400 glow-effect">⚔️</div>
-            <div class="text-2xl font-orbitron font-bold text-cyan-400">3+</div>
+            <div
+              class="text-yellow-400 glow-effect mb-2"
+              set:html={getIcon("sword")}
+            />
+            <div class="text-2xl font-orbitron font-bold text-yellow-400">
+              3+
+            </div>
             <div class="text-sm text-gray-400 font-cinzel">
               {t.home.stats.experience}
             </div>
@@ -73,10 +79,11 @@ const { t } = useTranslation("es");
 
           <!-- Projects stat -->
           <div class="mmorpg-card group cursor-pointer">
-            <div class="text-3xl mb-2 text-purple-400 glow-effect-secondary">
-              🏰
-            </div>
-            <div class="text-2xl font-orbitron font-bold text-purple-400">
+            <div
+              class="text-amber-500 glow-effect-secondary mb-2"
+              set:html={getIcon("castle")}
+            />
+            <div class="text-2xl font-orbitron font-bold text-amber-500">
               15+
             </div>
             <div class="text-sm text-gray-400 font-cinzel">
@@ -86,10 +93,11 @@ const { t } = useTranslation("es");
 
           <!-- Technologies stat -->
           <div class="mmorpg-card group cursor-pointer">
-            <div class="text-3xl mb-2 text-yellow-400 glow-effect-accent">
-              💎
-            </div>
-            <div class="text-2xl font-orbitron font-bold text-yellow-400">
+            <div
+              class="text-orange-400 glow-effect-accent mb-2"
+              set:html={getIcon("gem")}
+            />
+            <div class="text-2xl font-orbitron font-bold text-orange-400">
               10+
             </div>
             <div class="text-sm text-gray-400 font-cinzel">
@@ -133,8 +141,8 @@ const { t } = useTranslation("es");
       <div
         class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
       >
-        <div class="w-6 h-10 border-2 border-cyan-400 rounded-full p-1">
-          <div class="w-1 h-3 bg-cyan-400 rounded-full mx-auto animate-pulse">
+        <div class="w-6 h-10 border-2 border-yellow-400 rounded-full p-1">
+          <div class="w-1 h-3 bg-yellow-400 rounded-full mx-auto animate-pulse">
           </div>
         </div>
       </div>

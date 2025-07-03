@@ -2,6 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Navbar from "@/components/Navbar.astro";
 import { useTranslation } from "@/i18n/utils";
+import { getIcon } from "@/lib/icons";
 
 const { t } = useTranslation("en");
 ---
@@ -64,7 +65,10 @@ const { t } = useTranslation("en");
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           <!-- Experience stat -->
           <div class="mmorpg-card group cursor-pointer">
-            <div class="text-3xl mb-2 text-cyan-400 glow-effect">⚔️</div>
+            <div
+              class="w-12 h-12 mb-4 text-yellow-400 mx-auto glow-effect"
+              set:html={getIcon("sword")}
+            />
             <div class="text-2xl font-orbitron font-bold text-cyan-400">3+</div>
             <div class="text-sm text-gray-400 font-cinzel">
               {t.home.stats.experience}
@@ -74,7 +78,10 @@ const { t } = useTranslation("en");
           <!-- Projects stat -->
           <div class="mmorpg-card group cursor-pointer">
             <div class="text-3xl mb-2 text-purple-400 glow-effect-secondary">
-              🏰
+              <div
+                class="w-8 h-8 text-yellow-400"
+                set:html={getIcon("castle")}
+              />
             </div>
             <div class="text-2xl font-orbitron font-bold text-purple-400">
               15+
@@ -87,7 +94,7 @@ const { t } = useTranslation("en");
           <!-- Technologies stat -->
           <div class="mmorpg-card group cursor-pointer">
             <div class="text-3xl mb-2 text-yellow-400 glow-effect-accent">
-              💎
+              <div class="w-8 h-8 text-yellow-400" set:html={getIcon("gem")} />
             </div>
             <div class="text-2xl font-orbitron font-bold text-yellow-400">
               10+

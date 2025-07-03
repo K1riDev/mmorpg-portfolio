@@ -1,25 +1,31 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import Navbar from '@/components/Navbar.astro';
-import { useTranslation } from '@/i18n/utils';
-import { getLanguageIcon, getLanguageColor } from '@/lib/github';
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import { useTranslation } from "@/i18n/utils";
+import { getLanguageIcon, getLanguageColor } from "@/lib/github";
+import { getIcon } from "@/lib/icons";
 
-const { t } = useTranslation('en');
+const { t } = useTranslation("en");
 ---
 
 <Layout title="About - KiriDev" lang="en">
   <Navbar lang="en" currentPath="/en/about" />
-  
+
   <main class="min-h-screen pt-24 pb-16">
     <div class="container mx-auto px-6">
       <!-- Page Header -->
       <div class="text-center mb-16">
         <h1 class="text-5xl md:text-6xl font-cinzel font-bold mb-6">
-          <span class="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
+          <span
+            class="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent"
+          >
             {t.about.title}
           </span>
         </h1>
-        <div class="w-24 h-1 bg-gradient-to-r from-yellow-400 to-amber-500 mx-auto"></div>
+        <div
+          class="w-24 h-1 bg-gradient-to-r from-yellow-400 to-amber-500 mx-auto"
+        >
+        </div>
       </div>
 
       <div class="grid lg:grid-cols-2 gap-12 items-start">
@@ -28,18 +34,28 @@ const { t } = useTranslation('en');
           <div class="text-center mb-8">
             <!-- Avatar/Character -->
             <div class="w-32 h-32 mx-auto mb-6 relative">
-              <div class="w-full h-full rounded-full bg-gradient-to-br from-yellow-400 to-amber-500 p-1">
-                <div class="w-full h-full rounded-full bg-black flex items-center justify-center">
-                  <span class="text-4xl font-orbitron font-bold text-yellow-400">KD</span>
+              <div
+                class="w-full h-full rounded-full bg-gradient-to-br from-yellow-400 to-amber-500 p-1"
+              >
+                <div
+                  class="w-full h-full rounded-full bg-black flex items-center justify-center"
+                >
+                  <span class="text-4xl font-orbitron font-bold text-yellow-400"
+                    >KD</span
+                  >
                 </div>
               </div>
               <!-- Level indicator -->
-              <div class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-orange-400 text-black px-3 py-1 rounded-full text-sm font-orbitron font-bold">
+              <div
+                class="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-yellow-400 to-orange-400 text-black px-3 py-1 rounded-full text-sm font-orbitron font-bold"
+              >
                 LVL 3
               </div>
             </div>
-            
-            <h2 class="text-2xl font-cinzel font-bold text-yellow-400 mb-2">KiriDev</h2>
+
+            <h2 class="text-2xl font-cinzel font-bold text-yellow-400 mb-2">
+              KiriDev
+            </h2>
             <p class="text-amber-400 font-orbitron">Frontend Developer</p>
           </div>
 
@@ -54,11 +70,15 @@ const { t } = useTranslation('en');
                 <span class="font-orbitron text-yellow-400">JavaScript</span>
               </div>
               <div class="flex-1 mx-4 bg-gray-800 rounded-full h-2">
-                <div class="bg-gradient-to-r from-yellow-400 to-orange-400 h-2 rounded-full" style="width: 90%"></div>
+                <div
+                  class="bg-gradient-to-r from-yellow-400 to-orange-400 h-2 rounded-full"
+                  style="width: 90%"
+                >
+                </div>
               </div>
               <span class="font-orbitron text-xs text-gray-400">90%</span>
             </div>
-            
+
             <div class="flex justify-between items-center">
               <div class="flex items-center space-x-2">
                 <div
@@ -68,11 +88,15 @@ const { t } = useTranslation('en');
                 <span class="font-orbitron text-amber-400">React</span>
               </div>
               <div class="flex-1 mx-4 bg-gray-800 rounded-full h-2">
-                <div class="bg-gradient-to-r from-amber-400 to-yellow-500 h-2 rounded-full" style="width: 85%"></div>
+                <div
+                  class="bg-gradient-to-r from-amber-400 to-yellow-500 h-2 rounded-full"
+                  style="width: 85%"
+                >
+                </div>
               </div>
               <span class="font-orbitron text-xs text-gray-400">85%</span>
             </div>
-            
+
             <div class="flex justify-between items-center">
               <div class="flex items-center space-x-2">
                 <div
@@ -82,11 +106,15 @@ const { t } = useTranslation('en');
                 <span class="font-orbitron text-green-400">Node.js</span>
               </div>
               <div class="flex-1 mx-4 bg-gray-800 rounded-full h-2">
-                <div class="bg-gradient-to-r from-green-400 to-emerald-400 h-2 rounded-full" style="width: 70%"></div>
+                <div
+                  class="bg-gradient-to-r from-green-400 to-emerald-400 h-2 rounded-full"
+                  style="width: 70%"
+                >
+                </div>
               </div>
               <span class="font-orbitron text-xs text-gray-400">70%</span>
             </div>
-            
+
             <div class="flex justify-between items-center">
               <div class="flex items-center space-x-2">
                 <div
@@ -96,7 +124,11 @@ const { t } = useTranslation('en');
                 <span class="font-orbitron text-orange-400">TypeScript</span>
               </div>
               <div class="flex-1 mx-4 bg-gray-800 rounded-full h-2">
-                <div class="bg-gradient-to-r from-orange-400 to-red-400 h-2 rounded-full" style="width: 80%"></div>
+                <div
+                  class="bg-gradient-to-r from-orange-400 to-red-400 h-2 rounded-full"
+                  style="width: 80%"
+                >
+                </div>
               </div>
               <span class="font-orbitron text-xs text-gray-400">80%</span>
             </div>
@@ -107,8 +139,10 @@ const { t } = useTranslation('en');
         <div class="space-y-8">
           <!-- Main description -->
           <div class="mmorpg-card">
-            <h3 class="text-2xl font-cinzel font-bold text-yellow-400 mb-4 flex items-center">
-              <span class="text-2xl mr-3">📖</span>
+            <h3
+              class="text-2xl font-cinzel font-bold text-yellow-400 mb-4 flex items-center"
+            >
+              <div class="text-yellow-400 mr-3" set:html={getIcon("book")} />
               My Story
             </h3>
             <p class="text-gray-300 leading-relaxed font-cinzel">
@@ -118,45 +152,58 @@ const { t } = useTranslation('en');
 
           <!-- Skills section -->
           <div class="mmorpg-card">
-            <h3 class="text-2xl font-cinzel font-bold text-amber-400 mb-6 flex items-center">
-              <span class="text-2xl mr-3">⚔️</span>
+            <h3
+              class="text-2xl font-cinzel font-bold text-amber-400 mb-6 flex items-center"
+            >
+              <div class="text-amber-400 mr-3" set:html={getIcon("sword")} />
               {t.about.skills}
             </h3>
-            
+
             <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {[
-                { name: "React", icon: "React" },
-                { name: "Vue.js", icon: "Vue" },
-                { name: "Astro", icon: "Astro" },
-                { name: "TypeScript", icon: "TypeScript" },
-                { name: "TailwindCSS", icon: "CSS" },
-                { name: "Node.js", icon: "Node.js" }
-              ].map(skill => (
-                <div class="flex items-center space-x-3 p-3 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-colors">
-                  <div
-                    class="text-yellow-400 flex-shrink-0"
-                    set:html={getLanguageIcon(skill.icon)}
-                  />
-                  <span class="font-orbitron text-sm">{skill.name}</span>
-                </div>
-              ))}
+              {
+                [
+                  { name: "React", icon: "React" },
+                  { name: "Vue.js", icon: "Vue" },
+                  { name: "Astro", icon: "Astro" },
+                  { name: "TypeScript", icon: "TypeScript" },
+                  { name: "TailwindCSS", icon: "CSS" },
+                  { name: "Node.js", icon: "Node.js" },
+                ].map((skill) => (
+                  <div class="flex items-center space-x-3 p-3 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-colors">
+                    <div
+                      class="text-yellow-400 flex-shrink-0"
+                      set:html={getLanguageIcon(skill.icon)}
+                    />
+                    <span class="font-orbitron text-sm">{skill.name}</span>
+                  </div>
+                ))
+              }
             </div>
           </div>
 
           <!-- Currently Learning -->
           <div class="mmorpg-card">
-            <h3 class="text-2xl font-cinzel font-bold text-orange-400 mb-6 flex items-center">
-              <span class="text-2xl mr-3">📚</span>
+            <h3
+              class="text-2xl font-cinzel font-bold text-orange-400 mb-6 flex items-center"
+            >
+              <div class="text-orange-400 mr-3" set:html={getIcon("scroll")} />
               {t.about.learning}
             </h3>
-            
+
             <div class="space-y-3">
-              {['Backend Development', 'Database Design', 'DevOps', 'System Architecture'].map(item => (
-                <div class="flex items-center space-x-3 p-3 rounded-lg border border-orange-400/30 hover:border-orange-400 transition-colors">
-                  <div class="w-2 h-2 bg-orange-400 rounded-full animate-pulse"></div>
-                  <span class="font-orbitron text-sm">{item}</span>
-                </div>
-              ))}
+              {
+                [
+                  "Backend Development",
+                  "Database Design",
+                  "DevOps",
+                  "System Architecture",
+                ].map((item) => (
+                  <div class="flex items-center space-x-3 p-3 rounded-lg border border-orange-400/30 hover:border-orange-400 transition-colors">
+                    <div class="w-2 h-2 bg-orange-400 rounded-full animate-pulse" />
+                    <span class="font-orbitron text-sm">{item}</span>
+                  </div>
+                ))
+              }
             </div>
           </div>
         </div>
@@ -166,40 +213,40 @@ const { t } = useTranslation('en');
 </Layout>
 
 <script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   gsap.registerPlugin(ScrollTrigger);
 
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     // Animate cards on scroll
-    gsap.from('.mmorpg-card', {
+    gsap.from(".mmorpg-card", {
       duration: 1,
       y: 50,
       opacity: 0,
       stagger: 0.2,
-      ease: 'power3.out',
+      ease: "power3.out",
       scrollTrigger: {
-        trigger: '.mmorpg-card',
-        start: 'top 80%',
-        end: 'bottom 20%',
-        toggleActions: 'play none none reverse'
-      }
+        trigger: ".mmorpg-card",
+        start: "top 80%",
+        end: "bottom 20%",
+        toggleActions: "play none none reverse",
+      },
     });
 
     // Animate skill bars
-    const skillBars = document.querySelectorAll('.bg-gradient-to-r');
+    const skillBars = document.querySelectorAll(".bg-gradient-to-r");
     skillBars.forEach((bar, index) => {
       gsap.from(bar, {
         duration: 1.5,
-        width: '0%',
-        ease: 'power2.out',
+        width: "0%",
+        ease: "power2.out",
         delay: index * 0.2,
         scrollTrigger: {
           trigger: bar,
-          start: 'top 80%',
-          toggleActions: 'play none none reverse'
-        }
+          start: "top 80%",
+          toggleActions: "play none none reverse",
+        },
       });
     });
   });

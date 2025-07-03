@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import Navbar from "@/components/Navbar.astro";
 import { useTranslation } from "@/i18n/utils";
 import { getLanguageIcon } from "@/lib/github";
+import { getIcon } from "@/lib/icons";
 
 const { t } = useTranslation("es");
 ---
@@ -16,13 +17,13 @@ const { t } = useTranslation("es");
       <div class="text-center mb-16">
         <h1 class="text-5xl md:text-6xl font-cinzel font-bold mb-6">
           <span
-            class="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
+            class="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent"
           >
             {t.resume.title}
           </span>
         </h1>
         <div
-          class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto mb-8"
+          class="w-24 h-1 bg-gradient-to-r from-yellow-400 to-amber-500 mx-auto mb-8"
         >
         </div>
 
@@ -52,9 +53,9 @@ const { t } = useTranslation("es");
         <!-- Professional Experience -->
         <section class="mmorpg-card">
           <h2
-            class="text-3xl font-cinzel font-bold text-cyan-400 mb-8 flex items-center"
+            class="text-3xl font-cinzel font-bold text-yellow-400 mb-8 flex items-center"
           >
-            <span class="text-3xl mr-4">⚔️</span>
+            <div class="text-yellow-400 mr-4" set:html={getIcon("sword")} />
             {t.resume.sections.experience}
           </h2>
 
@@ -119,9 +120,9 @@ const { t } = useTranslation("es");
         <!-- Education -->
         <section class="mmorpg-card">
           <h2
-            class="text-3xl font-cinzel font-bold text-purple-400 mb-8 flex items-center"
+            class="text-3xl font-cinzel font-bold text-amber-500 mb-8 flex items-center"
           >
-            <span class="text-3xl mr-4">🎓</span>
+            <div class="text-amber-500 mr-4" set:html={getIcon("book")} />
             {t.resume.sections.education}
           </h2>
 
@@ -149,9 +150,9 @@ const { t } = useTranslation("es");
         <!-- Technical Skills -->
         <section class="mmorpg-card">
           <h2
-            class="text-3xl font-cinzel font-bold text-yellow-400 mb-8 flex items-center"
+            class="text-3xl font-cinzel font-bold text-orange-400 mb-8 flex items-center"
           >
-            <span class="text-3xl mr-4">💎</span>
+            <div class="text-orange-400 mr-4" set:html={getIcon("gem")} />
             {t.resume.sections.skills}
           </h2>
 
@@ -164,7 +165,11 @@ const { t } = useTranslation("es");
               <div class="space-y-3">
                 {
                   [
-                    { name: "JavaScript/TypeScript", level: 90, icon: "JavaScript" },
+                    {
+                      name: "JavaScript/TypeScript",
+                      level: 90,
+                      icon: "JavaScript",
+                    },
                     { name: "React.js", level: 85, icon: "React" },
                     { name: "Vue.js", level: 80, icon: "Vue" },
                     { name: "TailwindCSS", level: 95, icon: "CSS" },
@@ -177,7 +182,9 @@ const { t } = useTranslation("es");
                             class="text-cyan-400 flex-shrink-0"
                             set:html={getLanguageIcon(skill.icon)}
                           />
-                          <span class="font-orbitron text-sm">{skill.name}</span>
+                          <span class="font-orbitron text-sm">
+                            {skill.name}
+                          </span>
                         </div>
                         <span class="font-orbitron text-xs text-gray-400">
                           {skill.level}%
@@ -217,7 +224,9 @@ const { t } = useTranslation("es");
                             class="text-purple-400 flex-shrink-0"
                             set:html={getLanguageIcon(skill.icon)}
                           />
-                          <span class="font-orbitron text-sm">{skill.name}</span>
+                          <span class="font-orbitron text-sm">
+                            {skill.name}
+                          </span>
                         </div>
                         <span class="font-orbitron text-xs text-gray-400">
                           {skill.level}%
@@ -242,7 +251,7 @@ const { t } = useTranslation("es");
           <h2
             class="text-3xl font-cinzel font-bold text-green-400 mb-8 flex items-center"
           >
-            <span class="text-3xl mr-4">🏆</span>
+            <div class="text-green-400 mr-4" set:html={getIcon("trophy")} />
             {t.resume.sections.certifications}
           </h2>
 
@@ -272,7 +281,10 @@ const { t } = useTranslation("es");
               ].map((cert) => (
                 <div class="flex items-center space-x-4 p-4 bg-slate-700/50 rounded-lg border border-green-400/30">
                   <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-400 rounded-lg flex items-center justify-center">
-                    <span class="text-slate-900 font-bold">🏆</span>
+                    <div
+                      class="w-4 h-4 text-yellow-600"
+                      set:html={getIcon("trophy")}
+                    />
                   </div>
                   <div>
                     <h3 class="font-orbitron font-bold text-green-400 text-sm">

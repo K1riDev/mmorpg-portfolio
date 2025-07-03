@@ -91,8 +91,8 @@
   border: 2px solid var(--primary-glow);
   background: linear-gradient(
     135deg,
-    rgba(6, 182, 212, 0.1),
-    rgba(139, 92, 246, 0.1)
+    rgba(251, 191, 36, 0.1),
+    rgba(245, 158, 11, 0.1)
   );
 }
 
@@ -140,8 +140,8 @@
   color: white;
   background: linear-gradient(
     135deg,
-    rgba(6, 182, 212, 0.2),
-    rgba(139, 92, 246, 0.2)
+    rgba(251, 191, 36, 0.2),
+    rgba(245, 158, 11, 0.2)
   );
   border: 2px solid var(--primary-glow);
   position: relative;
@@ -171,7 +171,7 @@
 
 .mmorpg-button:hover {
   box-shadow: 0 0 20px var(--primary-glow),
-    inset 0 0 20px rgba(6, 182, 212, 0.1);
+    inset 0 0 20px rgba(251, 191, 36, 0.1);
   transform: translateY(-2px);
 }
 
@@ -186,7 +186,7 @@
     rgba(30, 41, 59, 0.8),
     rgba(15, 23, 42, 0.8)
   );
-  border: 1px solid rgba(6, 182, 212, 0.3);
+  border: 1px solid rgba(251, 191, 36, 0.3);
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
@@ -224,7 +224,7 @@
 
 .mmorpg-card:hover {
   border-color: var(--primary-glow);
-  box-shadow: 0 8px 32px rgba(6, 182, 212, 0.2),
+  box-shadow: 0 8px 32px rgba(251, 191, 36, 0.2),
     inset 0 1px 0 rgba(255, 255, 255, 0.1);
   transform: translateY(-4px);
   transition: all 0.3s ease;
@@ -234,7 +234,7 @@
 .nav-glass {
   background: rgba(15, 23, 42, 0.8);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(6, 182, 212, 0.3);
+  border-bottom: 1px solid rgba(251, 191, 36, 0.3);
 }
 
 /* Text glow effects */

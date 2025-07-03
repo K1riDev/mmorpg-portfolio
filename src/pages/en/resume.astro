@@ -1,10 +1,11 @@
 ---
-import Layout from '@/layouts/Layout.astro';
-import Navbar from '@/components/Navbar.astro';
-import { useTranslation } from '@/i18n/utils';
-import { getLanguageIcon } from '@/lib/github';
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import { useTranslation } from "@/i18n/utils";
+import { getLanguageIcon } from "@/lib/github";
+import { getIcon } from "@/lib/icons";
 
-const { t } = useTranslation('en');
+const { t } = useTranslation("en");
 ---
 
 <Layout title="Resume - KiriDev" lang="en">
@@ -15,14 +16,19 @@ const { t } = useTranslation('en');
       <!-- Page Header -->
       <div class="text-center mb-16">
         <h1 class="text-5xl md:text-6xl font-cinzel font-bold mb-6">
-          <span class="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
+          <span
+            class="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent"
+          >
             {t.resume.title}
           </span>
         </h1>
         <p class="text-xl text-gray-300 max-w-2xl mx-auto font-cinzel">
           {t.resume.subtitle}
         </p>
-        <div class="w-24 h-1 bg-gradient-to-r from-yellow-400 to-amber-500 mx-auto mt-6"></div>
+        <div
+          class="w-24 h-1 bg-gradient-to-r from-yellow-400 to-amber-500 mx-auto mt-6"
+        >
+        </div>
       </div>
 
       <!-- Download Button -->
@@ -32,8 +38,18 @@ const { t } = useTranslation('en');
           download="KiriDev-Resume-EN.pdf"
           class="mmorpg-button inline-flex items-center space-x-3 px-8 py-4"
         >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          <svg
+            class="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+            ></path>
           </svg>
           <span>{t.resume.download}</span>
         </a>
@@ -43,8 +59,10 @@ const { t } = useTranslation('en');
         <!-- Professional Summary -->
         <section class="mmorpg-card">
           <div class="flex items-center mb-8">
-            <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center mr-4">
-              <span class="text-black text-xl font-bold">👤</span>
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center mr-4"
+            >
+              <div class="text-black" set:html={getIcon("character")} />
             </div>
             <h2 class="text-3xl font-cinzel font-bold text-yellow-400">
               {t.resume.summary.title}
@@ -58,8 +76,10 @@ const { t } = useTranslation('en');
         <!-- Experience -->
         <section class="mmorpg-card">
           <div class="flex items-center mb-8">
-            <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center mr-4">
-              <span class="text-black text-xl font-bold">💼</span>
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center mr-4"
+            >
+              <div class="text-black" set:html={getIcon("hammer")} />
             </div>
             <h2 class="text-3xl font-cinzel font-bold text-yellow-400">
               {t.resume.experience.title}
@@ -69,33 +89,53 @@ const { t } = useTranslation('en');
           <div class="space-y-8">
             <!-- Experience Item 1 -->
             <div class="relative pl-8 border-l-2 border-yellow-400/30">
-              <div class="absolute -left-3 w-6 h-6 bg-yellow-400 rounded-full border-4 border-gray-900"></div>
+              <div
+                class="absolute -left-3 w-6 h-6 bg-yellow-400 rounded-full border-4 border-gray-900"
+              >
+              </div>
               <div class="mb-4">
-                <h3 class="text-xl font-bold text-yellow-400 font-orbitron">Frontend Developer</h3>
+                <h3 class="text-xl font-bold text-yellow-400 font-orbitron">
+                  Frontend Developer
+                </h3>
                 <p class="text-gray-400 font-orbitron">Freelance Projects</p>
-                <span class="text-sm text-gray-500 font-orbitron">2023 - Present</span>
+                <span class="text-sm text-gray-500 font-orbitron"
+                  >2023 - Present</span
+                >
               </div>
               <ul class="text-gray-300 space-y-2 font-cinzel">
-                <li>• Development of responsive interfaces with React and Vue.js</li>
+                <li>
+                  • Development of responsive interfaces with React and Vue.js
+                </li>
                 <li>• Implementation of MMORPG-style design systems</li>
-                <li>• Performance optimization and accessibility improvements</li>
+                <li>
+                  • Performance optimization and accessibility improvements
+                </li>
                 <li>• Integration with REST APIs and real-time services</li>
               </ul>
             </div>
 
             <!-- Experience Item 2 -->
             <div class="relative pl-8 border-l-2 border-yellow-400/30">
-              <div class="absolute -left-3 w-6 h-6 bg-yellow-400/70 rounded-full border-4 border-gray-900"></div>
+              <div
+                class="absolute -left-3 w-6 h-6 bg-yellow-400/70 rounded-full border-4 border-gray-900"
+              >
+              </div>
               <div class="mb-4">
-                <h3 class="text-xl font-bold text-yellow-400 font-orbitron">Web Developer</h3>
+                <h3 class="text-xl font-bold text-yellow-400 font-orbitron">
+                  Web Developer
+                </h3>
                 <p class="text-gray-400 font-orbitron">Personal Projects</p>
-                <span class="text-sm text-gray-500 font-orbitron">2022 - 2023</span>
+                <span class="text-sm text-gray-500 font-orbitron"
+                  >2022 - 2023</span
+                >
               </div>
               <ul class="text-gray-300 space-y-2 font-cinzel">
                 <li>• Creation of interactive web applications</li>
                 <li>• Learning and implementing modern frameworks</li>
                 <li>• Responsive design and cross-browser compatibility</li>
-                <li>• Version control with Git and collaborative development</li>
+                <li>
+                  • Version control with Git and collaborative development
+                </li>
               </ul>
             </div>
           </div>
@@ -104,8 +144,10 @@ const { t } = useTranslation('en');
         <!-- Education -->
         <section class="mmorpg-card">
           <div class="flex items-center mb-8">
-            <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center mr-4">
-              <span class="text-black text-xl font-bold">🎓</span>
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center mr-4"
+            >
+              <div class="text-black" set:html={getIcon("crown")} />
             </div>
             <h2 class="text-3xl font-cinzel font-bold text-yellow-400">
               {t.resume.education.title}
@@ -113,11 +155,20 @@ const { t } = useTranslation('en');
           </div>
 
           <div class="relative pl-8 border-l-2 border-yellow-400/30">
-            <div class="absolute -left-3 w-6 h-6 bg-yellow-400 rounded-full border-4 border-gray-900"></div>
+            <div
+              class="absolute -left-3 w-6 h-6 bg-yellow-400 rounded-full border-4 border-gray-900"
+            >
+            </div>
             <div class="mb-4">
-              <h3 class="text-xl font-bold text-yellow-400 font-orbitron">Computer Science</h3>
-              <p class="text-gray-400 font-orbitron">Self-taught & Online Courses</p>
-              <span class="text-sm text-gray-500 font-orbitron">2021 - Present</span>
+              <h3 class="text-xl font-bold text-yellow-400 font-orbitron">
+                Computer Science
+              </h3>
+              <p class="text-gray-400 font-orbitron">
+                Self-taught & Online Courses
+              </p>
+              <span class="text-sm text-gray-500 font-orbitron"
+                >2021 - Present</span
+              >
             </div>
             <ul class="text-gray-300 space-y-2 font-cinzel">
               <li>• Modern web development fundamentals</li>
@@ -131,8 +182,10 @@ const { t } = useTranslation('en');
         <!-- Skills -->
         <section class="mmorpg-card">
           <div class="flex items-center mb-8">
-            <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center mr-4">
-              <span class="text-black text-xl font-bold">⚔️</span>
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center mr-4"
+            >
+              <div class="text-black" set:html={getIcon("sword")} />
             </div>
             <h2 class="text-3xl font-cinzel font-bold text-yellow-400">
               {t.resume.skills.title}
@@ -142,69 +195,95 @@ const { t } = useTranslation('en');
           <div class="grid md:grid-cols-2 gap-8">
             <!-- Frontend Skills -->
             <div>
-              <h3 class="text-xl font-bold text-yellow-400 mb-6 font-orbitron">Frontend Development</h3>
+              <h3 class="text-xl font-bold text-yellow-400 mb-6 font-orbitron">
+                Frontend Development
+              </h3>
               <div class="space-y-4">
-                {[
-                  { name: 'HTML/CSS/JavaScript', level: 5, icon: 'JavaScript' },
-                  { name: 'React/Vue.js', level: 4, icon: 'React' },
-                  { name: 'TypeScript', level: 4, icon: 'TypeScript' },
-                  { name: 'Astro/Next.js', level: 3, icon: 'Astro' },
-                  { name: 'TailwindCSS', level: 5, icon: 'CSS' }
-                ].map(skill => (
-                  <div class="skill-item">
-                    <div class="flex justify-between items-center mb-2">
-                      <div class="flex items-center space-x-2">
+                {
+                  [
+                    {
+                      name: "HTML/CSS/JavaScript",
+                      level: 5,
+                      icon: "JavaScript",
+                    },
+                    { name: "React/Vue.js", level: 4, icon: "React" },
+                    { name: "TypeScript", level: 4, icon: "TypeScript" },
+                    { name: "Astro/Next.js", level: 3, icon: "Astro" },
+                    { name: "TailwindCSS", level: 5, icon: "CSS" },
+                  ].map((skill) => (
+                    <div class="skill-item">
+                      <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center space-x-2">
+                          <div
+                            class="text-yellow-400 flex-shrink-0"
+                            set:html={getLanguageIcon(skill.icon)}
+                          />
+                          <span class="text-gray-300 font-orbitron">
+                            {skill.name}
+                          </span>
+                        </div>
+                        <div class="flex space-x-1">
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <div
+                              class={`w-3 h-3 rounded-full ${i < skill.level ? "bg-yellow-400" : "bg-gray-700"}`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                      <div class="w-full bg-gray-700 rounded-full h-2">
                         <div
-                          class="text-yellow-400 flex-shrink-0"
-                          set:html={getLanguageIcon(skill.icon)}
+                          class="bg-gradient-to-r from-yellow-400 to-amber-500 h-2 rounded-full transition-all duration-1000"
+                          style={`width: ${skill.level * 20}%`}
                         />
-                        <span class="text-gray-300 font-orbitron">{skill.name}</span>
-                      </div>
-                      <div class="flex space-x-1">
-                        {Array.from({length: 5}).map((_, i) => (
-                          <div class={`w-3 h-3 rounded-full ${i < skill.level ? 'bg-yellow-400' : 'bg-gray-700'}`}></div>
-                        ))}
                       </div>
                     </div>
-                    <div class="w-full bg-gray-700 rounded-full h-2">
-                      <div class="bg-gradient-to-r from-yellow-400 to-amber-500 h-2 rounded-full transition-all duration-1000" style={`width: ${skill.level * 20}%`}></div>
-                    </div>
-                  </div>
-                ))}
+                  ))
+                }
               </div>
             </div>
 
             <!-- Backend & Tools -->
             <div>
-              <h3 class="text-xl font-bold text-yellow-400 mb-6 font-orbitron">Backend & Tools</h3>
+              <h3 class="text-xl font-bold text-yellow-400 mb-6 font-orbitron">
+                Backend & Tools
+              </h3>
               <div class="space-y-4">
-                {[
-                  { name: 'Node.js', level: 3, icon: 'Node.js' },
-                  { name: 'Git/GitHub', level: 4, icon: 'Git' },
-                  { name: 'Databases', level: 2, icon: 'MongoDB' },
-                  { name: 'Docker', level: 2, icon: 'Docker' },
-                  { name: 'APIs/REST', level: 3, icon: 'JavaScript' }
-                ].map(skill => (
-                  <div class="skill-item">
-                    <div class="flex justify-between items-center mb-2">
-                      <div class="flex items-center space-x-2">
+                {
+                  [
+                    { name: "Node.js", level: 3, icon: "Node.js" },
+                    { name: "Git/GitHub", level: 4, icon: "Git" },
+                    { name: "Databases", level: 2, icon: "MongoDB" },
+                    { name: "Docker", level: 2, icon: "Docker" },
+                    { name: "APIs/REST", level: 3, icon: "JavaScript" },
+                  ].map((skill) => (
+                    <div class="skill-item">
+                      <div class="flex justify-between items-center mb-2">
+                        <div class="flex items-center space-x-2">
+                          <div
+                            class="text-yellow-400 flex-shrink-0"
+                            set:html={getLanguageIcon(skill.icon)}
+                          />
+                          <span class="text-gray-300 font-orbitron">
+                            {skill.name}
+                          </span>
+                        </div>
+                        <div class="flex space-x-1">
+                          {Array.from({ length: 5 }).map((_, i) => (
+                            <div
+                              class={`w-3 h-3 rounded-full ${i < skill.level ? "bg-yellow-400" : "bg-gray-700"}`}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                      <div class="w-full bg-gray-700 rounded-full h-2">
                         <div
-                          class="text-yellow-400 flex-shrink-0"
-                          set:html={getLanguageIcon(skill.icon)}
+                          class="bg-gradient-to-r from-yellow-400 to-amber-500 h-2 rounded-full transition-all duration-1000"
+                          style={`width: ${skill.level * 20}%`}
                         />
-                        <span class="text-gray-300 font-orbitron">{skill.name}</span>
-                      </div>
-                      <div class="flex space-x-1">
-                        {Array.from({length: 5}).map((_, i) => (
-                          <div class={`w-3 h-3 rounded-full ${i < skill.level ? 'bg-yellow-400' : 'bg-gray-700'}`}></div>
-                        ))}
                       </div>
                     </div>
-                    <div class="w-full bg-gray-700 rounded-full h-2">
-                      <div class="bg-gradient-to-r from-yellow-400 to-amber-500 h-2 rounded-full transition-all duration-1000" style={`width: ${skill.level * 20}%`}></div>
-                    </div>
-                  </div>
-                ))}
+                  ))
+                }
               </div>
             </div>
           </div>
@@ -213,8 +292,10 @@ const { t } = useTranslation('en');
         <!-- Languages -->
         <section class="mmorpg-card">
           <div class="flex items-center mb-8">
-            <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center mr-4">
-              <span class="text-black text-xl font-bold">🌍</span>
+            <div
+              class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center mr-4"
+            >
+              <div class="text-black" set:html={getIcon("castle")} />
             </div>
             <h2 class="text-3xl font-cinzel font-bold text-yellow-400">
               {t.resume.languages.title}
@@ -222,13 +303,20 @@ const { t } = useTranslation('en');
           </div>
 
           <div class="grid md:grid-cols-2 gap-8">
-            <div class="flex items-center justify-between p-4 bg-gray-900/30 rounded-lg border border-gray-700">
+            <div
+              class="flex items-center justify-between p-4 bg-gray-900/30 rounded-lg border border-gray-700"
+            >
               <span class="text-gray-300 font-orbitron text-lg">Spanish</span>
-              <span class="text-yellow-400 font-orbitron font-bold">Native</span>
+              <span class="text-yellow-400 font-orbitron font-bold">Native</span
+              >
             </div>
-            <div class="flex items-center justify-between p-4 bg-gray-900/30 rounded-lg border border-gray-700">
+            <div
+              class="flex items-center justify-between p-4 bg-gray-900/30 rounded-lg border border-gray-700"
+            >
               <span class="text-gray-300 font-orbitron text-lg">English</span>
-              <span class="text-yellow-400 font-orbitron font-bold">Intermediate</span>
+              <span class="text-yellow-400 font-orbitron font-bold"
+                >Intermediate</span
+              >
             </div>
           </div>
         </section>
@@ -238,38 +326,38 @@ const { t } = useTranslation('en');
 </Layout>
 
 <script>
-  import { gsap } from 'gsap';
-  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
 
   gsap.registerPlugin(ScrollTrigger);
 
-  document.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener("DOMContentLoaded", () => {
     // Animate sections
-    gsap.from('.mmorpg-card', {
+    gsap.from(".mmorpg-card", {
       duration: 0.8,
       y: 50,
       opacity: 0,
       stagger: 0.2,
-      ease: 'power3.out',
+      ease: "power3.out",
       scrollTrigger: {
-        trigger: '.mmorpg-card',
-        start: 'top 80%',
-        toggleActions: 'play none none reverse'
-      }
+        trigger: ".mmorpg-card",
+        start: "top 80%",
+        toggleActions: "play none none reverse",
+      },
     });
 
     // Animate skill bars
-    gsap.from('.skill-item', {
+    gsap.from(".skill-item", {
       duration: 1,
       x: -50,
       opacity: 0,
       stagger: 0.1,
-      ease: 'power2.out',
+      ease: "power2.out",
       scrollTrigger: {
-        trigger: '.skill-item',
-        start: 'top 90%',
-        toggleActions: 'play none none reverse'
-      }
+        trigger: ".skill-item",
+        start: "top 90%",
+        toggleActions: "play none none reverse",
+      },
     });
 
     // Animate timeline items
@@ -278,12 +366,12 @@ const { t } = useTranslation('en');
       x: -30,
       opacity: 0,
       stagger: 0.2,
-      ease: 'power2.out',
+      ease: "power2.out",
       scrollTrigger: {
         trigger: '[class*="border-l-2"]',
-        start: 'top 85%',
-        toggleActions: 'play none none reverse'
-      }
+        start: "top 85%",
+        toggleActions: "play none none reverse",
+      },
     });
   });
 </script>
