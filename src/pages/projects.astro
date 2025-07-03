@@ -22,7 +22,7 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
         html_url: '', // Sin enlace a GitHub para proyectos privados
         homepage: 'https://www.firemoss.xyz/',
         language: 'TypeScript',
-        stargazers_count: 25, // Proyectos destacados con estrellas altas
+        stargazers_count: 0,
         forks_count: 0,
         fork: false,
         topics: ['typescript', 'web-platform', 'multimedia', 'modern-ui'],
@@ -35,7 +35,7 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
         html_url: '', // Sin enlace a GitHub para proyectos privados
         homepage: 'https://realmverse.me/',
         language: 'JavaScript',
-        stargazers_count: 30, // Proyectos destacados con estrellas altas
+        stargazers_count: 0,
         forks_count: 0,
         fork: false,
         topics: ['javascript', 'gaming', 'interactive', 'immersive-web'],
@@ -43,9 +43,15 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
       }
     ];
     
-    // Combinar repositorios públicos y privados, luego ordenar por estrellas
+    // Combinar repositorios públicos y privados, luego ordenar: privados primero, luego por estrellas
     const allRepos = [...githubRepos, ...privateProjects];
-    return allRepos.sort((a, b) => b.stargazers_count - a.stargazers_count);
+    return allRepos.sort((a, b) => {
+      // Los proyectos privados van primero
+      if (a.private && !b.private) return -1;
+      if (!a.private && b.private) return 1;
+      // Si ambos son del mismo tipo, ordenar por estrellas
+      return b.stargazers_count - a.stargazers_count;
+    });
   } catch (error) {
     // Fallback data with MMORPG theme, ordenado por estrellas
     return [
@@ -56,7 +62,7 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
         html_url: '',
         homepage: 'https://www.firemoss.xyz/',
         language: 'TypeScript',
-        stargazers_count: 25,
+        stargazers_count: 0,
         forks_count: 0,
         fork: false,
         topics: ['typescript', 'web-platform', 'multimedia', 'modern-ui'],
@@ -69,7 +75,7 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
         html_url: '',
         homepage: 'https://realmverse.me/',
         language: 'JavaScript',
-        stargazers_count: 30,
+        stargazers_count: 0,
         forks_count: 0,
         fork: false,
         topics: ['javascript', 'gaming', 'interactive', 'immersive-web'],
