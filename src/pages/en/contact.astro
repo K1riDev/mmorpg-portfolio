@@ -260,7 +260,6 @@ const { t } = useTranslation("en");
 
 <script>
   import { gsap } from "gsap";
-  import { toast } from "@pheralb/toast";
 
   document.addEventListener("DOMContentLoaded", () => {
     // Form submission
@@ -294,17 +293,13 @@ const { t } = useTranslation("en");
           await new Promise((resolve) => setTimeout(resolve, 2000));
 
           // Show success message
-          toast.success({
-            text: "Message sent successfully!",
-          });
+          alert("Message sent successfully!");
 
           // Reset form
           form.reset();
         } catch (error) {
           // Show error message
-          toast.error({
-            text: "Error sending message. Please try again.",
-          });
+          alert("Error sending message. Please try again.");
         } finally {
           // Reset button
           submitBtn.disabled = false;

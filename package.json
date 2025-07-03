@@ -7,12 +7,11 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "npm run build && wrangler pages deploy dist",
-    "deploy:preview": "npm run build && wrangler pages deploy dist --compatibility-date=2024-09-23"
+    "deploy": "pnpm build && wrangler pages deploy dist",
+    "deploy:preview": "pnpm build && wrangler pages deploy dist --compatibility-date=2024-09-23"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.4.1",
-    "@pheralb/toast": "^1.0.0",
     "@tailwindcss/vite": "^4.1.11",
     "astro": "^5.10.2",
     "gsap": "^3.13.0",
