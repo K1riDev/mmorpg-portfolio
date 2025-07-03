@@ -34,7 +34,7 @@ const {
     />
   </head>
   <body
-    class="bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 min-h-screen text-white overflow-x-hidden"
+    class="bg-gradient-to-br from-black via-gray-900 to-black min-h-screen text-white overflow-x-hidden"
   >
     <!-- Background particles/stars -->
     <div id="particles" class="fixed inset-0 pointer-events-none z-0"></div>
@@ -47,25 +47,25 @@ const {
     <!-- Loading Screen -->
     <div
       id="loading-screen"
-      class="fixed inset-0 z-50 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 flex items-center justify-center"
+      class="fixed inset-0 z-50 bg-gradient-to-br from-black via-gray-900 to-black flex items-center justify-center"
     >
       <div class="text-center">
         <div class="relative inline-block">
           <!-- Magic circle animation -->
           <div
-            class="w-24 h-24 border-4 border-cyan-400 rounded-full animate-spin"
+            class="w-24 h-24 border-4 border-yellow-400 rounded-full animate-spin"
           >
           </div>
           <div
-            class="absolute inset-2 w-16 h-16 border-4 border-purple-400 rounded-full animate-spin-reverse"
+            class="absolute inset-2 w-16 h-16 border-4 border-amber-500 rounded-full animate-spin-reverse"
           >
           </div>
           <div
-            class="absolute inset-4 w-8 h-8 border-4 border-yellow-400 rounded-full animate-pulse"
+            class="absolute inset-4 w-8 h-8 border-4 border-orange-400 rounded-full animate-pulse"
           >
           </div>
         </div>
-        <p class="mt-4 text-xl font-cinzel text-cyan-400 animate-pulse">
+        <p class="mt-4 text-xl font-cinzel text-yellow-400 animate-pulse">
           Cargando el Reino...
         </p>
       </div>
@@ -108,7 +108,7 @@ const {
         for (let i = 0; i < 50; i++) {
           const particle = document.createElement("div");
           particle.className =
-            "absolute w-1 h-1 bg-cyan-400 rounded-full animate-pulse";
+            "absolute w-1 h-1 bg-yellow-400 rounded-full animate-pulse";
           particle.style.left = Math.random() * 100 + "%";
           particle.style.top = Math.random() * 100 + "%";
           particle.style.animationDelay = Math.random() * 2 + "s";

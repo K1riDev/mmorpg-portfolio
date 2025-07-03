@@ -15,16 +15,16 @@ const { t } = useTranslation("es");
       <div class="text-center mb-16">
         <h1 class="text-5xl md:text-6xl font-cinzel font-bold mb-6">
           <span
-            class="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent"
+            class="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent"
           >
             {t.contact.title}
           </span>
         </h1>
         <p class="text-xl text-gray-300 max-w-2xl mx-auto font-cinzel">
-          {t.contact.description}
+          {t.contact.subtitle}
         </p>
         <div
-          class="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 mx-auto mt-6"
+          class="w-24 h-1 bg-gradient-to-r from-yellow-400 to-amber-500 mx-auto mt-6"
         >
         </div>
       </div>
@@ -34,7 +34,7 @@ const { t } = useTranslation("es");
           <!-- Contact Form -->
           <div class="mmorpg-card">
             <h2
-              class="text-2xl font-cinzel font-bold text-cyan-400 mb-8 flex items-center"
+              class="text-2xl font-cinzel font-bold text-yellow-400 mb-8 flex items-center"
             >
               <span class="text-2xl mr-3">📬</span>
               Portal de Mensaje
@@ -44,7 +44,7 @@ const { t } = useTranslation("es");
               <div>
                 <label
                   for="name"
-                  class="block text-sm font-orbitron text-cyan-400 mb-2"
+                  class="block text-sm font-orbitron text-yellow-400 mb-2"
                 >
                   {t.contact.form.name}
                 </label>
@@ -266,13 +266,13 @@ const { t } = useTranslation("es");
     });
 
     // Form submission
-    const form = document.getElementById("contact-form");
-    const submitBtn = document.getElementById("submit-btn");
-    const submitText = document.getElementById("submit-text");
-    const submitIcon = document.getElementById("submit-icon");
-    const loadingIcon = document.getElementById("loading-icon");
+    const form = document.getElementById("contact-form") as HTMLFormElement;
+    const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+    const submitText = document.getElementById("submit-text") as HTMLElement;
+    const submitIcon = document.getElementById("submit-icon") as HTMLElement;
+    const loadingIcon = document.getElementById("loading-icon") as HTMLElement;
 
-    if (form && submitBtn) {
+    if (form && submitBtn && submitText && submitIcon && loadingIcon) {
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
 

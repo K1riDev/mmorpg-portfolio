@@ -5,33 +5,33 @@
 
 /* CSS Variables for theme */
 :root {
-  --primary-glow: #06b6d4;
-  --secondary-glow: #8b5cf6;
-  --accent-glow: #eab308;
-  --background-primary: #0f172a;
-  --background-secondary: #1e293b;
+  --primary-glow: #fbbf24;
+  --secondary-glow: #f59e0b;
+  --accent-glow: #d97706;
+  --background-primary: #000000;
+  --background-secondary: #1a1a1a;
   --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
+  --text-secondary: #d1d5db;
 }
 
 .dark {
-  --primary-glow: #06b6d4;
-  --secondary-glow: #8b5cf6;
-  --accent-glow: #eab308;
-  --background-primary: #0f172a;
-  --background-secondary: #1e293b;
+  --primary-glow: #fbbf24;
+  --secondary-glow: #f59e0b;
+  --accent-glow: #d97706;
+  --background-primary: #000000;
+  --background-secondary: #1a1a1a;
   --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
+  --text-secondary: #d1d5db;
 }
 
 .light {
-  --primary-glow: #0891b2;
-  --secondary-glow: #7c3aed;
-  --accent-glow: #ca8a04;
-  --background-primary: #f8fafc;
-  --background-secondary: #e2e8f0;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
+  --primary-glow: #d97706;
+  --secondary-glow: #b45309;
+  --accent-glow: #92400e;
+  --background-primary: #f3f4f6;
+  --background-secondary: #e5e7eb;
+  --text-primary: #111827;
+  --text-secondary: #374151;
 }
 
 /* Font families */

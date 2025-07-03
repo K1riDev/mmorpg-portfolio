@@ -1,0 +1,276 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Navbar from '@/components/Navbar.astro';
+import { useTranslation } from '@/i18n/utils';
+
+const { t } = useTranslation('en');
+---
+
+<Layout title="Resume - KiriDev" lang="en">
+  <Navbar lang="en" currentPath="/en/resume" />
+
+  <main class="min-h-screen pt-24 pb-16">
+    <div class="container mx-auto px-6">
+      <!-- Page Header -->
+      <div class="text-center mb-16">
+        <h1 class="text-5xl md:text-6xl font-cinzel font-bold mb-6">
+          <span class="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
+            {t.resume.title}
+          </span>
+        </h1>
+        <p class="text-xl text-gray-300 max-w-2xl mx-auto font-cinzel">
+          {t.resume.subtitle}
+        </p>
+        <div class="w-24 h-1 bg-gradient-to-r from-yellow-400 to-amber-500 mx-auto mt-6"></div>
+      </div>
+
+      <!-- Download Button -->
+      <div class="text-center mb-16">
+        <a
+          href="/assets/resume-en.pdf"
+          download="KiriDev-Resume-EN.pdf"
+          class="mmorpg-button inline-flex items-center space-x-3 px-8 py-4"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          <span>{t.resume.download}</span>
+        </a>
+      </div>
+
+      <div class="max-w-6xl mx-auto space-y-12">
+        <!-- Professional Summary -->
+        <section class="mmorpg-card">
+          <div class="flex items-center mb-8">
+            <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center mr-4">
+              <span class="text-black text-xl font-bold">👤</span>
+            </div>
+            <h2 class="text-3xl font-cinzel font-bold text-yellow-400">
+              {t.resume.summary.title}
+            </h2>
+          </div>
+          <p class="text-gray-300 text-lg leading-relaxed font-cinzel">
+            {t.resume.summary.description}
+          </p>
+        </section>
+
+        <!-- Experience -->
+        <section class="mmorpg-card">
+          <div class="flex items-center mb-8">
+            <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center mr-4">
+              <span class="text-black text-xl font-bold">💼</span>
+            </div>
+            <h2 class="text-3xl font-cinzel font-bold text-yellow-400">
+              {t.resume.experience.title}
+            </h2>
+          </div>
+
+          <div class="space-y-8">
+            <!-- Experience Item 1 -->
+            <div class="relative pl-8 border-l-2 border-yellow-400/30">
+              <div class="absolute -left-3 w-6 h-6 bg-yellow-400 rounded-full border-4 border-gray-900"></div>
+              <div class="mb-4">
+                <h3 class="text-xl font-bold text-yellow-400 font-orbitron">Frontend Developer</h3>
+                <p class="text-gray-400 font-orbitron">Freelance Projects</p>
+                <span class="text-sm text-gray-500 font-orbitron">2023 - Present</span>
+              </div>
+              <ul class="text-gray-300 space-y-2 font-cinzel">
+                <li>• Development of responsive interfaces with React and Vue.js</li>
+                <li>• Implementation of MMORPG-style design systems</li>
+                <li>• Performance optimization and accessibility improvements</li>
+                <li>• Integration with REST APIs and real-time services</li>
+              </ul>
+            </div>
+
+            <!-- Experience Item 2 -->
+            <div class="relative pl-8 border-l-2 border-yellow-400/30">
+              <div class="absolute -left-3 w-6 h-6 bg-yellow-400/70 rounded-full border-4 border-gray-900"></div>
+              <div class="mb-4">
+                <h3 class="text-xl font-bold text-yellow-400 font-orbitron">Web Developer</h3>
+                <p class="text-gray-400 font-orbitron">Personal Projects</p>
+                <span class="text-sm text-gray-500 font-orbitron">2022 - 2023</span>
+              </div>
+              <ul class="text-gray-300 space-y-2 font-cinzel">
+                <li>• Creation of interactive web applications</li>
+                <li>• Learning and implementing modern frameworks</li>
+                <li>• Responsive design and cross-browser compatibility</li>
+                <li>• Version control with Git and collaborative development</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education -->
+        <section class="mmorpg-card">
+          <div class="flex items-center mb-8">
+            <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center mr-4">
+              <span class="text-black text-xl font-bold">🎓</span>
+            </div>
+            <h2 class="text-3xl font-cinzel font-bold text-yellow-400">
+              {t.resume.education.title}
+            </h2>
+          </div>
+
+          <div class="relative pl-8 border-l-2 border-yellow-400/30">
+            <div class="absolute -left-3 w-6 h-6 bg-yellow-400 rounded-full border-4 border-gray-900"></div>
+            <div class="mb-4">
+              <h3 class="text-xl font-bold text-yellow-400 font-orbitron">Computer Science</h3>
+              <p class="text-gray-400 font-orbitron">Self-taught & Online Courses</p>
+              <span class="text-sm text-gray-500 font-orbitron">2021 - Present</span>
+            </div>
+            <ul class="text-gray-300 space-y-2 font-cinzel">
+              <li>• Modern web development fundamentals</li>
+              <li>• Frontend frameworks and libraries</li>
+              <li>• Backend development with Node.js</li>
+              <li>• Database design and management</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Skills -->
+        <section class="mmorpg-card">
+          <div class="flex items-center mb-8">
+            <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center mr-4">
+              <span class="text-black text-xl font-bold">⚔️</span>
+            </div>
+            <h2 class="text-3xl font-cinzel font-bold text-yellow-400">
+              {t.resume.skills.title}
+            </h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <!-- Frontend Skills -->
+            <div>
+              <h3 class="text-xl font-bold text-yellow-400 mb-6 font-orbitron">Frontend Development</h3>
+              <div class="space-y-4">
+                {[
+                  { name: 'HTML/CSS/JavaScript', level: 5 },
+                  { name: 'React/Vue.js', level: 4 },
+                  { name: 'TypeScript', level: 4 },
+                  { name: 'Astro/Next.js', level: 3 },
+                  { name: 'TailwindCSS', level: 5 }
+                ].map(skill => (
+                  <div class="skill-item">
+                    <div class="flex justify-between items-center mb-2">
+                      <span class="text-gray-300 font-orbitron">{skill.name}</span>
+                      <div class="flex space-x-1">
+                        {Array.from({length: 5}).map((_, i) => (
+                          <div class={`w-3 h-3 rounded-full ${i < skill.level ? 'bg-yellow-400' : 'bg-gray-700'}`}></div>
+                        ))}
+                      </div>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                      <div class="bg-gradient-to-r from-yellow-400 to-amber-500 h-2 rounded-full transition-all duration-1000" style={`width: ${skill.level * 20}%`}></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <!-- Backend & Tools -->
+            <div>
+              <h3 class="text-xl font-bold text-yellow-400 mb-6 font-orbitron">Backend & Tools</h3>
+              <div class="space-y-4">
+                {[
+                  { name: 'Node.js', level: 3 },
+                  { name: 'Git/GitHub', level: 4 },
+                  { name: 'Databases', level: 2 },
+                  { name: 'Docker', level: 2 },
+                  { name: 'APIs/REST', level: 3 }
+                ].map(skill => (
+                  <div class="skill-item">
+                    <div class="flex justify-between items-center mb-2">
+                      <span class="text-gray-300 font-orbitron">{skill.name}</span>
+                      <div class="flex space-x-1">
+                        {Array.from({length: 5}).map((_, i) => (
+                          <div class={`w-3 h-3 rounded-full ${i < skill.level ? 'bg-yellow-400' : 'bg-gray-700'}`}></div>
+                        ))}
+                      </div>
+                    </div>
+                    <div class="w-full bg-gray-700 rounded-full h-2">
+                      <div class="bg-gradient-to-r from-yellow-400 to-amber-500 h-2 rounded-full transition-all duration-1000" style={`width: ${skill.level * 20}%`}></div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Languages -->
+        <section class="mmorpg-card">
+          <div class="flex items-center mb-8">
+            <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-lg flex items-center justify-center mr-4">
+              <span class="text-black text-xl font-bold">🌍</span>
+            </div>
+            <h2 class="text-3xl font-cinzel font-bold text-yellow-400">
+              {t.resume.languages.title}
+            </h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="flex items-center justify-between p-4 bg-gray-900/30 rounded-lg border border-gray-700">
+              <span class="text-gray-300 font-orbitron text-lg">Spanish</span>
+              <span class="text-yellow-400 font-orbitron font-bold">Native</span>
+            </div>
+            <div class="flex items-center justify-between p-4 bg-gray-900/30 rounded-lg border border-gray-700">
+              <span class="text-gray-300 font-orbitron text-lg">English</span>
+              <span class="text-yellow-400 font-orbitron font-bold">Intermediate</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Animate sections
+    gsap.from('.mmorpg-card', {
+      duration: 0.8,
+      y: 50,
+      opacity: 0,
+      stagger: 0.2,
+      ease: 'power3.out',
+      scrollTrigger: {
+        trigger: '.mmorpg-card',
+        start: 'top 80%',
+        toggleActions: 'play none none reverse'
+      }
+    });
+
+    // Animate skill bars
+    gsap.from('.skill-item', {
+      duration: 1,
+      x: -50,
+      opacity: 0,
+      stagger: 0.1,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '.skill-item',
+        start: 'top 90%',
+        toggleActions: 'play none none reverse'
+      }
+    });
+
+    // Animate timeline items
+    gsap.from('[class*="border-l-2"]', {
+      duration: 0.8,
+      x: -30,
+      opacity: 0,
+      stagger: 0.2,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '[class*="border-l-2"]',
+        start: 'top 85%',
+        toggleActions: 'play none none reverse'
+      }
+    });
+  });
+</script>

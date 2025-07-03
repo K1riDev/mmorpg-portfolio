@@ -29,9 +29,10 @@ export const translations = {
     },
     projects: {
       title: "Arsenal de Proyectos",
-      description: "Una colección de mis aventuras en el desarrollo web",
+      subtitle: "Una colección de mis aventuras en el desarrollo web",
       viewProject: "Ver Proyecto",
       viewCode: "Ver Código",
+      viewAll: "Ver todos los proyectos",
       technologies: "Tecnologías",
       status: {
         completed: "Completado",
@@ -41,7 +42,24 @@ export const translations = {
     },
     resume: {
       title: "Pergamino de Experiencia",
+      subtitle: "Mi trayectoria profesional y habilidades técnicas",
       download: "Descargar CV",
+      summary: {
+        title: "Resumen Profesional",
+        description: "Desarrollador frontend apasionado con experiencia en tecnologías modernas, enfocado en la creación de interfaces de usuario excepcionales y experiencias web inmersivas. Actualmente expandiendo conocimientos hacia el desarrollo backend.",
+      },
+      experience: {
+        title: "Experiencia Profesional",
+      },
+      education: {
+        title: "Formación Académica",
+      },
+      skills: {
+        title: "Habilidades Técnicas",
+      },
+      languages: {
+        title: "Idiomas",
+      },
       sections: {
         experience: "Experiencia Profesional",
         education: "Formación Académica",
@@ -51,14 +69,30 @@ export const translations = {
     },
     contact: {
       title: "Establecer Comunicación",
-      description: "Envía un mensaje a través del portal de comunicación",
+      subtitle: "Envía un mensaje a través del portal de comunicación",
       form: {
+        title: "Enviar Mensaje",
         name: "Nombre",
+        namePlaceholder: "Tu nombre",
         email: "Correo Electrónico",
+        emailPlaceholder: "tu@email.com",
+        subject: "Asunto",
+        subjectPlaceholder: "¿En qué puedo ayudarte?",
         message: "Mensaje",
+        messagePlaceholder: "Escribe tu mensaje aquí...",
         send: "Enviar Mensaje",
       },
-      social: "Canales de Comunicación",
+      info: {
+        title: "Información de Contacto",
+        availability: "Disponible para proyectos freelance",
+      },
+      social: {
+        title: "Redes Sociales",
+      },
+      response: {
+        title: "Tiempo de Respuesta",
+        description: "Normalmente respondo en un plazo de 24-48 horas. Para proyectos urgentes, puedes contactarme directamente por email.",
+      },
       success: "Mensaje enviado exitosamente",
       error: "Error al enviar el mensaje",
     },
@@ -99,9 +133,10 @@ export const translations = {
     },
     projects: {
       title: "Project Arsenal",
-      description: "A collection of my adventures in web development",
+      subtitle: "A collection of my adventures in web development",
       viewProject: "View Project",
       viewCode: "View Code",
+      viewAll: "View all projects",
       technologies: "Technologies",
       status: {
         completed: "Completed",
@@ -111,7 +146,24 @@ export const translations = {
     },
     resume: {
       title: "Experience Scroll",
+      subtitle: "My professional journey and technical skills",
       download: "Download Resume",
+      summary: {
+        title: "Professional Summary",
+        description: "Passionate frontend developer with experience in modern technologies, focused on creating exceptional user interfaces and immersive web experiences. Currently expanding knowledge towards backend development.",
+      },
+      experience: {
+        title: "Professional Experience",
+      },
+      education: {
+        title: "Education",
+      },
+      skills: {
+        title: "Technical Skills",
+      },
+      languages: {
+        title: "Languages",
+      },
       sections: {
         experience: "Professional Experience",
         education: "Academic Formation",
@@ -121,14 +173,30 @@ export const translations = {
     },
     contact: {
       title: "Establish Communication",
-      description: "Send a message through the communication portal",
+      subtitle: "Send a message through the communication portal",
       form: {
+        title: "Send Message",
         name: "Name",
+        namePlaceholder: "Your name",
         email: "Email",
+        emailPlaceholder: "your@email.com",
+        subject: "Subject",
+        subjectPlaceholder: "How can I help you?",
         message: "Message",
+        messagePlaceholder: "Write your message here...",
         send: "Send Message",
       },
-      social: "Communication Channels",
+      info: {
+        title: "Contact Information",
+        availability: "Available for freelance projects",
+      },
+      social: {
+        title: "Social Media",
+      },
+      response: {
+        title: "Response Time",
+        description: "I usually respond within 24-48 hours. For urgent projects, you can contact me directly by email.",
+      },
       success: "Message sent successfully",
       error: "Error sending message",
     },
