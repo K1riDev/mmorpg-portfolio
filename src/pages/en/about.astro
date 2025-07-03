@@ -60,121 +60,121 @@ const { t } = useTranslation("en");
           </div>
 
           <!-- Character Stats -->
-          <div class="space-y-4">
-            <div class="flex justify-between items-center">
+          <div class="space-y-4" data-skills>
+            <div class="flex justify-between items-center skill-bar">
               <div class="flex items-center space-x-2">
                 <div set:html={getLanguageIcon("JavaScript")} />
                 <span class="font-orbitron text-yellow-400">JavaScript</span>
               </div>
               <div class="flex-1 mx-4 bg-gray-800 rounded-full h-2">
                 <div
-                  class="bg-gradient-to-r from-yellow-400 to-orange-400 h-2 rounded-full"
-                  style="width: 90%"
+                  class="bg-gradient-to-r from-yellow-400 to-orange-400 h-2 rounded-full skill-progress"
+                  data-width="90"
                 >
                 </div>
               </div>
               <span class="font-orbitron text-xs text-gray-400">90%</span>
             </div>
 
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center skill-bar">
               <div class="flex items-center space-x-2">
                 <div set:html={getLanguageIcon("React")} />
                 <span class="font-orbitron text-amber-400">React</span>
               </div>
               <div class="flex-1 mx-4 bg-gray-800 rounded-full h-2">
                 <div
-                  class="bg-gradient-to-r from-amber-400 to-yellow-500 h-2 rounded-full"
-                  style="width: 85%"
+                  class="bg-gradient-to-r from-amber-400 to-yellow-500 h-2 rounded-full skill-progress"
+                  data-width="85"
                 >
                 </div>
               </div>
               <span class="font-orbitron text-xs text-gray-400">85%</span>
             </div>
 
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center skill-bar">
               <div class="flex items-center space-x-2">
                 <div set:html={getLanguageIcon("Node.js")} />
                 <span class="font-orbitron text-green-400">Node.js</span>
               </div>
               <div class="flex-1 mx-4 bg-gray-800 rounded-full h-2">
                 <div
-                  class="bg-gradient-to-r from-green-400 to-emerald-400 h-2 rounded-full"
-                  style="width: 70%"
+                  class="bg-gradient-to-r from-green-400 to-emerald-400 h-2 rounded-full skill-progress"
+                  data-width="70"
                 >
                 </div>
               </div>
               <span class="font-orbitron text-xs text-gray-400">70%</span>
             </div>
 
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center skill-bar">
               <div class="flex items-center space-x-2">
                 <div set:html={getLanguageIcon("TypeScript")} />
                 <span class="font-orbitron text-orange-400">TypeScript</span>
               </div>
               <div class="flex-1 mx-4 bg-gray-800 rounded-full h-2">
                 <div
-                  class="bg-gradient-to-r from-orange-400 to-red-400 h-2 rounded-full"
-                  style="width: 80%"
+                  class="bg-gradient-to-r from-orange-400 to-red-400 h-2 rounded-full skill-progress"
+                  data-width="80"
                 >
                 </div>
               </div>
               <span class="font-orbitron text-xs text-gray-400">80%</span>
             </div>
 
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center skill-bar">
               <div class="flex items-center space-x-2">
                 <div set:html={getLanguageIcon("Vue")} />
                 <span class="font-orbitron text-green-500">Vue</span>
               </div>
               <div class="flex-1 mx-4 bg-gray-800 rounded-full h-2">
                 <div
-                  class="bg-gradient-to-r from-green-500 to-emerald-500 h-2 rounded-full"
-                  style="width: 75%"
+                  class="bg-gradient-to-r from-green-500 to-emerald-500 h-2 rounded-full skill-progress"
+                  data-width="75"
                 >
                 </div>
               </div>
               <span class="font-orbitron text-xs text-gray-400">75%</span>
             </div>
 
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center skill-bar">
               <div class="flex items-center space-x-2">
                 <div set:html={getLanguageIcon("Python")} />
                 <span class="font-orbitron text-blue-400">Python</span>
               </div>
               <div class="flex-1 mx-4 bg-gray-800 rounded-full h-2">
                 <div
-                  class="bg-gradient-to-r from-blue-400 to-indigo-400 h-2 rounded-full"
-                  style="width: 65%"
+                  class="bg-gradient-to-r from-blue-400 to-indigo-400 h-2 rounded-full skill-progress"
+                  data-width="65"
                 >
                 </div>
               </div>
               <span class="font-orbitron text-xs text-gray-400">65%</span>
             </div>
 
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center skill-bar">
               <div class="flex items-center space-x-2">
                 <div set:html={getLanguageIcon("CSS")} />
                 <span class="font-orbitron text-cyan-400">CSS</span>
               </div>
               <div class="flex-1 mx-4 bg-gray-800 rounded-full h-2">
                 <div
-                  class="bg-gradient-to-r from-cyan-400 to-blue-400 h-2 rounded-full"
-                  style="width: 88%"
+                  class="bg-gradient-to-r from-cyan-400 to-blue-400 h-2 rounded-full skill-progress"
+                  data-width="88"
                 >
                 </div>
               </div>
               <span class="font-orbitron text-xs text-gray-400">88%</span>
             </div>
 
-            <div class="flex justify-between items-center">
+            <div class="flex justify-between items-center skill-bar">
               <div class="flex items-center space-x-2">
                 <div set:html={getLanguageIcon("Astro")} />
                 <span class="font-orbitron text-purple-400">Astro</span>
               </div>
               <div class="flex-1 mx-4 bg-gray-800 rounded-full h-2">
                 <div
-                  class="bg-gradient-to-r from-purple-400 to-pink-400 h-2 rounded-full"
-                  style="width: 82%"
+                  class="bg-gradient-to-r from-purple-400 to-pink-400 h-2 rounded-full skill-progress"
+                  data-width="82"
                 >
                 </div>
               </div>
@@ -315,35 +315,138 @@ const { t } = useTranslation("en");
   gsap.registerPlugin(ScrollTrigger);
 
   document.addEventListener("DOMContentLoaded", () => {
-    // Animate cards on scroll
+    // Animate cards with a cool entrance effect
     gsap.from(".mmorpg-card", {
-      duration: 1,
-      y: 50,
+      duration: 1.2,
+      scale: 0.8,
+      rotation: -5,
       opacity: 0,
-      stagger: 0.2,
-      ease: "power3.out",
+      stagger: 0.3,
+      ease: "back.out(1.7)",
       scrollTrigger: {
         trigger: ".mmorpg-card",
         start: "top 80%",
-        end: "bottom 20%",
         toggleActions: "play none none reverse",
       },
     });
 
-    // Animate skill bars
-    const skillBars = document.querySelectorAll(".bg-gradient-to-r");
-    skillBars.forEach((bar, index) => {
-      gsap.from(bar, {
-        duration: 1.5,
-        width: "0%",
-        ease: "power2.out",
-        delay: index * 0.2,
+    // Cool skill bars animation with bounce and glow effect
+    const skillProgress = document.querySelectorAll(".skill-progress");
+    const skillBars = document.querySelectorAll(".skill-bar");
+
+    skillBars.forEach((skillBar, index) => {
+      const progressBar = skillBar.querySelector(".skill-progress");
+      if (!progressBar) return;
+
+      const targetWidth = progressBar.getAttribute("data-width");
+      const percentage = skillBar.querySelector(".font-orbitron.text-xs");
+      if (!targetWidth) return;
+
+      // Set initial states
+      gsap.set(progressBar, { width: "0%", scale: 0.8 });
+      if (percentage) gsap.set(percentage, { opacity: 0, scale: 0 });
+
+      // Create timeline for each skill bar
+      const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: bar,
-          start: "top 80%",
+          trigger: skillBar,
+          start: "top 85%",
           toggleActions: "play none none reverse",
         },
       });
+
+      // Animate the skill bar with bounce effect
+      tl.to(progressBar, {
+        width: `${targetWidth}%`,
+        scale: 1,
+        duration: 1.5,
+        ease: "elastic.out(1, 0.5)",
+        delay: index * 0.15,
+      });
+      // Animate percentage with pop effect
+      if (percentage) {
+        tl.to(
+          percentage,
+          {
+            opacity: 1,
+            scale: 1,
+            duration: 0.6,
+            ease: "back.out(2)",
+          },
+          "-=0.8"
+        );
+      }
+      // Add a subtle glow pulse
+      tl.to(
+        progressBar,
+        {
+          boxShadow: "0 0 20px rgba(251, 191, 36, 0.5)",
+          duration: 0.3,
+          yoyo: true,
+          repeat: 1,
+          ease: "power2.inOut",
+        },
+        "-=0.3"
+      );
     });
+
+    // Interactive hover effects with morphing
+    skillBars.forEach((skillBar) => {
+      const progressBar = skillBar.querySelector(".skill-progress");
+
+      skillBar.addEventListener("mouseenter", () => {
+        gsap.to(skillBar, {
+          scale: 1.05,
+          duration: 0.4,
+          ease: "power2.out",
+        });
+
+        gsap.to(progressBar, {
+          height: "8px",
+          boxShadow: "0 0 15px rgba(251, 191, 36, 0.7)",
+          duration: 0.4,
+          ease: "power2.out",
+        });
+      });
+
+      skillBar.addEventListener("mouseleave", () => {
+        gsap.to(skillBar, {
+          scale: 1,
+          duration: 0.4,
+          ease: "power2.out",
+        });
+
+        gsap.to(progressBar, {
+          height: "8px",
+          boxShadow: "none",
+          duration: 0.4,
+          ease: "power2.out",
+        });
+      });
+    });
+
+    // Animate character avatar with floating effect
+    const avatar = document.querySelector(".w-32.h-32");
+    if (avatar) {
+      gsap.to(avatar, {
+        y: -10,
+        duration: 2,
+        ease: "power2.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+    }
+
+    // Animate level indicator with pulse
+    const levelIndicator = document.querySelector(".absolute.-bottom-2");
+    if (levelIndicator) {
+      gsap.to(levelIndicator, {
+        scale: 1.1,
+        duration: 1.5,
+        ease: "power2.inOut",
+        yoyo: true,
+        repeat: -1,
+      });
+    }
   });
 </script>
