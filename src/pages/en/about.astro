@@ -64,7 +64,6 @@ const { t } = useTranslation("en");
             <div class="flex justify-between items-center">
               <div class="flex items-center space-x-2">
                 <div
-                  class="text-yellow-400"
                   set:html={getLanguageIcon("JavaScript")}
                 />
                 <span class="font-orbitron text-yellow-400">JavaScript</span>
@@ -82,7 +81,6 @@ const { t } = useTranslation("en");
             <div class="flex justify-between items-center">
               <div class="flex items-center space-x-2">
                 <div
-                  class="text-amber-400"
                   set:html={getLanguageIcon("React")}
                 />
                 <span class="font-orbitron text-amber-400">React</span>
@@ -100,7 +98,6 @@ const { t } = useTranslation("en");
             <div class="flex justify-between items-center">
               <div class="flex items-center space-x-2">
                 <div
-                  class="text-green-400"
                   set:html={getLanguageIcon("Node.js")}
                 />
                 <span class="font-orbitron text-green-400">Node.js</span>
@@ -118,7 +115,6 @@ const { t } = useTranslation("en");
             <div class="flex justify-between items-center">
               <div class="flex items-center space-x-2">
                 <div
-                  class="text-orange-400"
                   set:html={getLanguageIcon("TypeScript")}
                 />
                 <span class="font-orbitron text-orange-400">TypeScript</span>
@@ -166,12 +162,12 @@ const { t } = useTranslation("en");
                   { name: "Vue.js", icon: "Vue" },
                   { name: "Astro", icon: "Astro" },
                   { name: "TypeScript", icon: "TypeScript" },
-                  { name: "TailwindCSS", icon: "CSS" },
+                  { name: "TailwindCSS", icon: "TailwindCSS" },
                   { name: "Node.js", icon: "Node.js" },
                 ].map((skill) => (
                   <div class="flex items-center space-x-3 p-3 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-colors">
                     <div
-                      class="text-yellow-400 flex-shrink-0"
+                      class="flex-shrink-0"
                       set:html={getLanguageIcon(skill.icon)}
                     />
                     <span class="font-orbitron text-sm">{skill.name}</span>

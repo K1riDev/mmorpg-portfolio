@@ -172,14 +172,14 @@ const { t } = useTranslation("es");
                     },
                     { name: "React.js", level: 85, icon: "React" },
                     { name: "Vue.js", level: 80, icon: "Vue" },
-                    { name: "TailwindCSS", level: 95, icon: "CSS" },
+                    { name: "TailwindCSS", level: 95, icon: "TailwindCSS" },
                     { name: "Astro", level: 75, icon: "Astro" },
                   ].map((skill) => (
                     <div>
                       <div class="flex justify-between items-center mb-1">
                         <div class="flex items-center space-x-2">
                           <div
-                            class="text-yellow-400 flex-shrink-0"
+                            class="flex-shrink-0"
                             set:html={getLanguageIcon(skill.icon)}
                           />
                           <span class="font-orbitron text-sm">
