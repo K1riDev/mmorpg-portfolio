@@ -45,7 +45,9 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
 
     // Combinar repositorios públicos y privados, luego ordenar: privados primero, luego por estrellas
     const allRepos = [...githubRepos, ...privateProjects];
-    return allRepos.sort((a, b) => {
+    // Filtrar repositorio del perfil (README del usuario)
+    const filteredRepos = allRepos.filter(repo => repo.name !== 'K1riDev');
+    return filteredRepos.sort((a, b) => {
       // Los proyectos privados van primero
       if (a.private && !b.private) return -1;
       if (!a.private && b.private) return 1;

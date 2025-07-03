@@ -18,15 +18,15 @@ export async function fetchGitHubRepos(
 ): Promise<GitHubRepo[]> {
   try {
     const response = await fetch(
-      `https://api.github.com/users/${username}/repos?sort=updated&per_page=10`
+      `https://api.github.com/users/${username}/repos?sort=stars&per_page=50&direction=desc`
     );
     if (!response.ok) {
       throw new Error("Failed to fetch repositories");
     }
     const repos: GitHubRepo[] = await response.json();
     const filteredRepos = repos.filter((repo) => !repo.fork);
-    // Ordenar por estrellas (de mayor a menor)
-    return filteredRepos.sort((a, b) => b.stargazers_count - a.stargazers_count);
+    // Ya viene ordenado por estrellas desde la API
+    return filteredRepos;
   } catch (error) {
     console.error("Error fetching GitHub repos:", error);
     throw error;
