@@ -26,6 +26,7 @@ export const translations = {
       description:
         "Soy KiriDev, un desarrollador frontend apasionado por crear interfaces de usuario excepcionales. Mi viaje comenzó con curiosidad por la web y ha evolucionado hacia una dedicación completa al desarrollo.",
       skills: "Habilidades de Combate",
+      tools: "Arsenal de Herramientas",
       experience: "Experiencia de Batalla",
       learning: "Actualmente Aprendiendo",
     },
@@ -133,6 +134,7 @@ export const translations = {
       description:
         "I am KiriDev, a frontend developer passionate about creating exceptional user interfaces. My journey started with curiosity about the web and has evolved into a complete dedication to development.",
       skills: "Combat Skills",
+      tools: "Tools Arsenal",
       experience: "Battle Experience",
       learning: "Currently Learning",
     },

@@ -2,7 +2,7 @@
 import Layout from "@/layouts/Layout.astro";
 import Navbar from "@/components/Navbar.astro";
 import { useTranslation } from "@/i18n/utils";
-import { getLanguageIcon, getLanguageColor } from "@/lib/github";
+import { getLanguageIcon } from "@/lib/github";
 import { getIcon } from "@/lib/icons";
 
 const { t } = useTranslation("en");
@@ -63,9 +63,7 @@ const { t } = useTranslation("en");
           <div class="space-y-4">
             <div class="flex justify-between items-center">
               <div class="flex items-center space-x-2">
-                <div
-                  set:html={getLanguageIcon("JavaScript")}
-                />
+                <div set:html={getLanguageIcon("JavaScript")} />
                 <span class="font-orbitron text-yellow-400">JavaScript</span>
               </div>
               <div class="flex-1 mx-4 bg-gray-800 rounded-full h-2">
@@ -80,9 +78,7 @@ const { t } = useTranslation("en");
 
             <div class="flex justify-between items-center">
               <div class="flex items-center space-x-2">
-                <div
-                  set:html={getLanguageIcon("React")}
-                />
+                <div set:html={getLanguageIcon("React")} />
                 <span class="font-orbitron text-amber-400">React</span>
               </div>
               <div class="flex-1 mx-4 bg-gray-800 rounded-full h-2">
@@ -97,9 +93,7 @@ const { t } = useTranslation("en");
 
             <div class="flex justify-between items-center">
               <div class="flex items-center space-x-2">
-                <div
-                  set:html={getLanguageIcon("Node.js")}
-                />
+                <div set:html={getLanguageIcon("Node.js")} />
                 <span class="font-orbitron text-green-400">Node.js</span>
               </div>
               <div class="flex-1 mx-4 bg-gray-800 rounded-full h-2">
@@ -114,9 +108,7 @@ const { t } = useTranslation("en");
 
             <div class="flex justify-between items-center">
               <div class="flex items-center space-x-2">
-                <div
-                  set:html={getLanguageIcon("TypeScript")}
-                />
+                <div set:html={getLanguageIcon("TypeScript")} />
                 <span class="font-orbitron text-orange-400">TypeScript</span>
               </div>
               <div class="flex-1 mx-4 bg-gray-800 rounded-full h-2">
@@ -127,6 +119,31 @@ const { t } = useTranslation("en");
                 </div>
               </div>
               <span class="font-orbitron text-xs text-gray-400">80%</span>
+            </div>
+          </div>
+
+          <!-- Currently Learning section in character panel -->
+          <div class="mt-8 pt-6 border-t border-slate-700">
+            <h4
+              class="text-lg font-cinzel font-bold text-orange-400 mb-4 flex items-center"
+            >
+              <div class="text-orange-400 mr-3" set:html={getIcon("book")} />
+              {t.about.learning}
+            </h4>
+            <div class="space-y-3">
+              {
+                [
+                  "Backend Development",
+                  "Database Design",
+                  "DevOps",
+                  "System Architecture",
+                ].map((item) => (
+                  <div class="flex items-center space-x-3 p-3 rounded-lg border border-orange-400/30 hover:border-orange-400 transition-colors">
+                    <div class="w-2 h-2 bg-orange-400 rounded-full animate-pulse" />
+                    <span class="font-orbitron text-sm">{item}</span>
+                  </div>
+                ))
+              }
             </div>
           </div>
         </div>
@@ -177,31 +194,39 @@ const { t } = useTranslation("en");
             </div>
           </div>
 
-          <!-- Currently Learning -->
+          <!-- Tools Arsenal section -->
           <div class="mmorpg-card">
             <h3
-              class="text-2xl font-cinzel font-bold text-orange-400 mb-6 flex items-center"
+              class="text-2xl font-cinzel font-bold text-cyan-400 mb-6 flex items-center"
             >
-              <div class="text-orange-400 mr-3" set:html={getIcon("scroll")} />
-              {t.about.learning}
+              <div class="text-cyan-400 mr-3" set:html={getIcon("hammer")} />
+              {t.about.tools}
             </h3>
 
-            <div class="space-y-3">
+            <div class="flex justify-center items-center gap-3 lg:gap-4 flex-wrap">
               {
                 [
-                  "Backend Development",
-                  "Database Design",
-                  "DevOps",
-                  "System Architecture",
-                ].map((item) => (
-                  <div class="flex items-center space-x-3 p-3 rounded-lg border border-orange-400/30 hover:border-orange-400 transition-colors">
-                    <div class="w-2 h-2 bg-orange-400 rounded-full animate-pulse" />
-                    <span class="font-orbitron text-sm">{item}</span>
+                  { name: "VS Code", icon: "vscode" },
+                  { name: "Figma", icon: "figma" },
+                  { name: "GitHub", icon: "github" },
+                  { name: "IntelliJ IDEA", icon: "intellij" },
+                  { name: "Git", icon: "git" },
+                ].map((tool) => (
+                  <div class="flex flex-col items-center justify-center w-20 h-20 p-2 rounded-lg bg-slate-700/50 hover:bg-slate-600/50 transition-colors group">
+                    <div
+                      class="flex-shrink-0 transform group-hover:scale-110 transition-transform duration-200 mb-1"
+                      set:html={getIcon(tool.icon as any)}
+                    />
+                    <span class="font-orbitron text-xs text-center leading-tight">
+                      {tool.name}
+                    </span>
                   </div>
                 ))
               }
             </div>
           </div>
+
+
         </div>
       </div>
     </div>
