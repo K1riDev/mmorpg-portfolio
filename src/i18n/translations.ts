@@ -17,6 +17,8 @@ export const translations = {
         experience: "Años de Experiencia",
         projects: "Proyectos Completados",
         technologies: "Tecnologías Dominadas",
+        stars: "Estrellas en GitHub",
+        forks: "Forks en GitHub",
       },
     },
     about: {
@@ -122,6 +124,8 @@ export const translations = {
         experience: "Years of Experience",
         projects: "Completed Projects",
         technologies: "Technologies Mastered",
+        stars: "GitHub Stars",
+        forks: "GitHub Forks",
       },
     },
     about: {

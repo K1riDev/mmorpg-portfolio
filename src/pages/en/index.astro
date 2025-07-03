@@ -3,9 +3,32 @@ import Layout from "@/layouts/Layout.astro";
 import Navbar from "@/components/Navbar.astro";
 import { useTranslation } from "@/i18n/utils";
 import { getIcon } from "@/lib/icons";
-import { getLanguageIcon } from "@/lib/github";
+import { getLanguageIcon, fetchGitHubStats } from "@/lib/github";
 
 const { t } = useTranslation("en");
+
+// Obtener estadísticas reales de GitHub
+let githubStats;
+try {
+  githubStats = await fetchGitHubStats("K1riDev");
+} catch (error) {
+  console.error("Error fetching GitHub stats:", error);
+  // Datos por defecto en caso de error
+  githubStats = {
+    yearsOfExperience: 3,
+    totalProjects: 15,
+    technologiesUsed: ["JavaScript", "TypeScript", "Vue", "React"],
+    totalStars: 0,
+    totalForks: 0,
+  };
+}
+
+// Estadísticas para mostrar
+const stats = {
+  experience: githubStats.yearsOfExperience.toString(),
+  projects: githubStats.totalProjects.toString(),
+  technologies: githubStats.technologiesUsed.length.toString(),
+};
 ---
 
 <Layout title="KiriDev - Portfolio" lang="en">
@@ -71,7 +94,7 @@ const { t } = useTranslation("en");
               set:html={getIcon("sword")}
             />
             <div class="text-2xl font-orbitron font-bold text-yellow-400">
-              3+
+              {stats.experience}+
             </div>
             <div class="text-sm text-gray-400 font-cinzel">
               {t.home.stats.experience}
@@ -87,7 +110,7 @@ const { t } = useTranslation("en");
               />
             </div>
             <div class="text-2xl font-orbitron font-bold text-orange-400">
-              15+
+              {stats.projects}+
             </div>
             <div class="text-sm text-gray-400 font-cinzel">
               {t.home.stats.projects}
@@ -100,7 +123,7 @@ const { t } = useTranslation("en");
               <div class="w-8 h-8 text-yellow-400" set:html={getIcon("gem")} />
             </div>
             <div class="text-2xl font-orbitron font-bold text-yellow-400">
-              10+
+              {stats.technologies}+
             </div>
             <div class="text-sm text-gray-400 font-cinzel">
               {t.home.stats.technologies}
