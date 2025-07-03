@@ -13,7 +13,7 @@ const { t } = useTranslation("es");
 
   <!-- Hero Section -->
   <main
-    class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16"
+    class="min-h-screen flex items-center justify-center relative overflow-hidden pt-28 pb-8"
   >
     <!-- Animated background elements -->
     <div class="absolute inset-0 z-0">
@@ -37,7 +37,7 @@ const { t } = useTranslation("es");
     <div class="container mx-auto px-6 text-center relative z-10">
       <!-- Main title with MMORPG styling -->
       <div class="mb-8">
-        <h1 class="text-6xl md:text-8xl font-cinzel font-bold mb-4">
+        <h1 class="text-4xl md:text-6xl font-cinzel font-bold mb-4">
           <span
             class="bg-gradient-to-r from-yellow-400 via-amber-500 to-orange-400 bg-clip-text text-transparent animate-pulse-glow"
           >
@@ -46,7 +46,7 @@ const { t } = useTranslation("es");
         </h1>
 
         <div class="relative inline-block">
-          <h2 class="text-2xl md:text-3xl font-orbitron text-gray-300 mb-6">
+          <h2 class="text-2xl md:text-3xl font-orbitron text-gray-300 mb-4">
             {t.home.subtitle}
           </h2>
           <!-- Decorative lines -->
@@ -62,7 +62,7 @@ const { t } = useTranslation("es");
       </div>
 
       <!-- Character stats-style info -->
-      <div class="mb-12">
+      <div class="mb-8">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           <!-- Experience stat -->
           <div class="mmorpg-card group cursor-pointer">
@@ -110,13 +110,13 @@ const { t } = useTranslation("es");
 
       <!-- Description -->
       <p
-        class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-12 font-cinzel leading-relaxed"
+        class="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8 font-cinzel leading-relaxed"
       >
         {t.home.description}
       </p>
 
       <!-- CTA Button -->
-      <div class="mb-16">
+      <div class="mb-12">
         <a
           href="/about"
           class="mmorpg-button inline-flex items-center space-x-3 text-lg"
@@ -139,8 +139,8 @@ const { t } = useTranslation("es");
       </div>
 
       <!-- Featured Projects Section -->
-      <div class="mb-16">
-        <h2 class="text-3xl font-cinzel font-bold text-center mb-8">
+      <div class="mb-12">
+        <h2 class="text-3xl font-cinzel font-bold text-center mb-6">
           <span
             class="bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent"
           >
@@ -212,9 +212,9 @@ const { t } = useTranslation("es");
       </div>
 
       <!-- Tech Stack Section -->
-      <div class="mb-16">
+      <div class="mb-8">
         <h2
-          class="text-2xl font-cinzel font-bold text-center mb-8 text-yellow-400"
+          class="text-2xl font-cinzel font-bold text-center mb-6 text-yellow-400"
         >
           Tecnologías Principales
         </h2>
@@ -240,16 +240,6 @@ const { t } = useTranslation("es");
               </div>
             ))
           }
-        </div>
-      </div>
-
-      <!-- Scroll indicator -->
-      <div
-        class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
-      >
-        <div class="w-6 h-10 border-2 border-yellow-400 rounded-full p-1">
-          <div class="w-1 h-3 bg-yellow-400 rounded-full mx-auto animate-pulse">
-          </div>
         </div>
       </div>
     </div>
