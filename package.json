@@ -6,7 +6,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "npm run build && wrangler pages deploy dist",
+    "deploy:preview": "npm run build && wrangler pages deploy dist --compatibility-date=2024-09-23"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.4.1",
@@ -17,5 +19,9 @@
     "gsap": "^3.13.0",
     "lucide-astro": "^0.525.0",
     "tailwindcss": "^4.1.11"
+  },
+  "devDependencies": {
+    "@astrojs/cloudflare": "^12.6.0",
+    "wrangler": "^4.23.0"
   }
 }

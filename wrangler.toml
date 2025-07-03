@@ -1,0 +1,13 @@
+#:schema node_modules/wrangler/config-schema.json
+name = "mmorpg-portfolio"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "./dist"
+
+[[kv_namespaces]]
+binding = "SESSION"
+id = "preview_id"
+preview_id = "preview_id"
+
+[[analytics]]
+tag = "webanalytics"
