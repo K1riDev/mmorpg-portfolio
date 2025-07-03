@@ -10,6 +10,7 @@ export interface GitHubRepo {
   forks_count: number;
   fork: boolean;
   topics: string[];
+  private?: boolean; // Para proyectos privados destacados
 }
 
 export async function fetchGitHubRepos(
@@ -23,7 +24,9 @@ export async function fetchGitHubRepos(
       throw new Error("Failed to fetch repositories");
     }
     const repos: GitHubRepo[] = await response.json();
-    return repos.filter((repo) => !repo.fork);
+    const filteredRepos = repos.filter((repo) => !repo.fork);
+    // Ordenar por estrellas (de mayor a menor)
+    return filteredRepos.sort((a, b) => b.stargazers_count - a.stargazers_count);
   } catch (error) {
     console.error("Error fetching GitHub repos:", error);
     throw error;

@@ -27,8 +27,13 @@ const navItems = [
     <div class="flex items-center justify-between h-16">
       <!-- Logo/Brand -->
       <a href={lang === 'es' ? '/' : '/en'} class="flex items-center space-x-3 group">
-        <div class="w-10 h-10 rounded-full bg-gradient-to-br from-yellow-400 to-amber-500 flex items-center justify-center glow-effect group-hover:glow-effect-secondary transition-all duration-300">
-          <span class="text-xl font-bold font-orbitron">K</span>
+        <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-yellow-400/50 group-hover:border-yellow-400 transition-all duration-300 glow-effect group-hover:glow-effect-secondary">
+          <img
+            src="https://github.com/K1riDev.png"
+            alt="KiriDev Avatar"
+            class="w-full h-full object-cover"
+            loading="lazy"
+          />
         </div>
         <span class="font-cinzel text-xl font-bold text-glow-sm">KiriDev</span>
       </a>

@@ -11,21 +11,69 @@ const { t } = useTranslation('en');
 async function getGitHubRepos(): Promise<GitHubRepo[]> {
   try {
     // Username real de GitHub
-    return await fetchGitHubRepos('K1riDev');
+    const githubRepos = await fetchGitHubRepos('K1riDev');
+    
+    // Agregar proyectos privados destacados
+    const privateProjects: GitHubRepo[] = [
+      {
+        id: 999999,
+        name: 'FireMoss',
+        description: 'Innovative web platform for multimedia content management with modern interface and advanced functionalities.',
+        html_url: '', // Sin enlace a GitHub para proyectos privados
+        homepage: 'https://www.firemoss.xyz/',
+        language: 'TypeScript',
+        stargazers_count: 25, // Proyectos destacados con estrellas altas
+        forks_count: 0,
+        fork: false,
+        topics: ['typescript', 'web-platform', 'multimedia', 'modern-ui'],
+        private: true
+      },
+      {
+        id: 999998,
+        name: 'RealmVerse',
+        description: 'Interactive digital universe that combines gaming and cutting-edge web technology for immersive experiences.',
+        html_url: '', // Sin enlace a GitHub para proyectos privados
+        homepage: 'https://realmverse.me/',
+        language: 'JavaScript',
+        stargazers_count: 30, // Proyectos destacados con estrellas altas
+        forks_count: 0,
+        fork: false,
+        topics: ['javascript', 'gaming', 'interactive', 'immersive-web'],
+        private: true
+      }
+    ];
+    
+    // Combinar repositorios públicos y privados, luego ordenar por estrellas
+    const allRepos = [...githubRepos, ...privateProjects];
+    return allRepos.sort((a, b) => b.stargazers_count - a.stargazers_count);
   } catch (error) {
-    // Fallback data with MMORPG theme
+    // Fallback data with MMORPG theme, ordenado por estrellas
     return [
       {
-        id: 1,
-        name: 'mmorpg-portfolio',
-        description: 'Personal portfolio with MMORPG design built with Astro and TailwindCSS',
-        html_url: 'https://github.com/your-username/mmorpg-portfolio',
-        homepage: 'https://your-portfolio.com',
+        id: 999999,
+        name: 'FireMoss',
+        description: 'Innovative web platform for multimedia content management with modern interface and advanced functionalities.',
+        html_url: '',
+        homepage: 'https://www.firemoss.xyz/',
         language: 'TypeScript',
-        stargazers_count: 5,
-        forks_count: 2,
+        stargazers_count: 25,
+        forks_count: 0,
         fork: false,
-        topics: ['astro', 'tailwindcss', 'portfolio', 'mmorpg']
+        topics: ['typescript', 'web-platform', 'multimedia', 'modern-ui'],
+        private: true
+      },
+      {
+        id: 999998,
+        name: 'RealmVerse',
+        description: 'Interactive digital universe that combines gaming and cutting-edge web technology for immersive experiences.',
+        html_url: '',
+        homepage: 'https://realmverse.me/',
+        language: 'JavaScript',
+        stargazers_count: 30,
+        forks_count: 0,
+        fork: false,
+        topics: ['javascript', 'gaming', 'interactive', 'immersive-web'],
+        private: true
       },
       {
         id: 2,
@@ -38,6 +86,18 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
         forks_count: 4,
         fork: false,
         topics: ['javascript', 'gaming', 'mmorpg', 'guild']
+      },
+      {
+        id: 6,
+        name: 'quest-tracker',
+        description: 'Quest and objective tracker for MMORPG players',
+        html_url: 'https://github.com/your-username/quest-tracker',
+        homepage: 'https://quest-tracker.app',
+        language: 'TypeScript',
+        stargazers_count: 10,
+        forks_count: 5,
+        fork: false,
+        topics: ['typescript', 'quest', 'tracker', 'mmorpg']
       },
       {
         id: 3,
@@ -64,6 +124,18 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
         topics: ['vue', 'rpg', 'character', 'sheet']
       },
       {
+        id: 1,
+        name: 'mmorpg-portfolio',
+        description: 'Personal portfolio with MMORPG design built with Astro and TailwindCSS',
+        html_url: 'https://github.com/your-username/mmorpg-portfolio',
+        homepage: 'https://your-portfolio.com',
+        language: 'TypeScript',
+        stargazers_count: 5,
+        forks_count: 2,
+        fork: false,
+        topics: ['astro', 'tailwindcss', 'portfolio', 'mmorpg']
+      },
+      {
         id: 5,
         name: 'loot-calculator',
         description: 'Loot and probability calculator for RPG games',
@@ -74,18 +146,6 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
         forks_count: 2,
         fork: false,
         topics: ['react', 'calculator', 'gaming', 'loot']
-      },
-      {
-        id: 6,
-        name: 'quest-tracker',
-        description: 'Quest and objective tracker for MMORPG players',
-        html_url: 'https://github.com/your-username/quest-tracker',
-        homepage: 'https://quest-tracker.app',
-        language: 'TypeScript',
-        stargazers_count: 10,
-        forks_count: 5,
-        fork: false,
-        topics: ['typescript', 'quest', 'tracker', 'mmorpg']
       }
     ];
   }
@@ -159,15 +219,24 @@ const repos = await getGitHubRepos();
 
               <!-- Actions -->
               <div class="flex space-x-3 mt-auto">
-                <a
-                  href={project.html_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="flex-1 mmorpg-button text-center py-2 px-4 text-sm"
-                >
-                  <div class="w-4 h-4 inline mr-2" set:html={getIcon('code')}></div>
-                  Code
-                </a>
+                {!project.private && project.html_url && (
+                  <a
+                    href={project.html_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex-1 mmorpg-button text-center py-2 px-4 text-sm"
+                  >
+                    <div class="w-4 h-4 inline mr-2" set:html={getIcon('code')}></div>
+                    Code
+                  </a>
+                )}
+                
+                {project.private && (
+                  <div class="flex-1 bg-gradient-to-r from-slate-600/20 to-slate-700/20 border border-slate-500/50 rounded-lg px-4 py-2 text-center text-sm text-slate-400 font-orbitron">
+                    Private Project
+                  </div>
+                )}
+                
                 {project.homepage && (
                   <a
                     href={project.homepage}
