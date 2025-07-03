@@ -33,11 +33,40 @@ export interface GitHubStats {
   totalForks: number;
 }
 
+// Función auxiliar para peticiones con manejo de rate limiting
+async function fetchGitHubAPI(url: string): Promise<Response> {
+  const headers: HeadersInit = {
+    "Accept": "application/vnd.github+json",
+    "X-GitHub-Api-Version": "2022-11-28",
+  };
+
+  // Si hay un token de GitHub disponible en variables de entorno, usarlo
+  if (typeof process !== "undefined" && process.env?.GITHUB_TOKEN) {
+    headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+  }
+
+  const response = await fetch(url, { headers });
+
+  // Verificar rate limiting
+  const remaining = response.headers.get("X-RateLimit-Remaining");
+  const resetTime = response.headers.get("X-RateLimit-Reset");
+
+  if (remaining && parseInt(remaining) < 10) {
+    console.warn(
+      `GitHub API: Only ${remaining} requests remaining. Resets at ${new Date(
+        parseInt(resetTime || "0") * 1000
+      )}`
+    );
+  }
+
+  return response;
+}
+
 export async function fetchGitHubRepos(
   username: string
 ): Promise<GitHubRepo[]> {
   try {
-    const response = await fetch(
+    const response = await fetchGitHubAPI(
       `https://api.github.com/users/${username}/repos?sort=stars&per_page=50&direction=desc`
     );
     if (!response.ok) {
@@ -55,7 +84,7 @@ export async function fetchGitHubRepos(
 
 export async function fetchGitHubUser(username: string): Promise<GitHubUser> {
   try {
-    const response = await fetch(`https://api.github.com/users/${username}`);
+    const response = await fetchGitHubAPI(`https://api.github.com/users/${username}`);
     if (!response.ok) {
       throw new Error("Failed to fetch user data");
     }
@@ -68,30 +97,31 @@ export async function fetchGitHubUser(username: string): Promise<GitHubUser> {
 
 export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
   try {
-    // Obtener TODOS los repositorios del usuario (sin límite de páginas)
-    let allRepos: GitHubRepo[] = [];
-    let page = 1;
-    let hasMorePages = true;
-
-    while (hasMorePages) {
-      const response = await fetch(
-        `https://api.github.com/users/${username}/repos?per_page=100&page=${page}&sort=created&direction=asc`
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch repositories");
-      }
-
-      const repos: GitHubRepo[] = await response.json();
-
-      if (repos.length === 0) {
-        hasMorePages = false;
-      } else {
-        allRepos = [...allRepos, ...repos];
-        page++;
+    // Verificar caché primero (válido por 1 hora) - solo en el cliente
+    const cacheKey = `github-stats-${username}`;
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const cached = localStorage.getItem(cacheKey);
+      if (cached) {
+        const { data, timestamp } = JSON.parse(cached);
+        const oneHour = 60 * 60 * 1000;
+        if (Date.now() - timestamp < oneHour) {
+          console.log('Using cached GitHub stats');
+          return data;
+        }
       }
     }
 
+    // Obtener solo la primera página de repositorios (100 más recientes)
+    // Esto reduce significativamente las peticiones a la API
+    const response = await fetchGitHubAPI(
+      `https://api.github.com/users/${username}/repos?per_page=100&sort=updated&direction=desc`
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch repositories");
+    }
+
+    const allRepos: GitHubRepo[] = await response.json();
     const [user] = await Promise.all([fetchGitHubUser(username)]);
 
     // Filtrar repositorios reales (sin forks, sin repos especiales como .github, pero contar casi todos)
@@ -105,9 +135,12 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
     // Calcular años de experiencia desde el primer repositorio REAL (julio 2019 según dijiste)
     let oldestRepoDate = new Date();
     if (realRepos.length > 0) {
-      // El primer repo del array es el más antiguo (kiri_identity - julio 2019)
+      // Encontrar el repo más antiguo de los obtenidos
+      const sortedByDate = realRepos.sort((a, b) => 
+        new Date(a.created_at || '').getTime() - new Date(b.created_at || '').getTime()
+      );
       oldestRepoDate = new Date(
-        realRepos[0].created_at || "2019-07-08T00:00:00Z"
+        sortedByDate[0].created_at || "2019-07-08T00:00:00Z"
       );
     } else {
       // Fallback a la fecha de creación de la cuenta
@@ -123,8 +156,8 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
       )
     );
 
-    // Contar TODOS los repositorios reales (debería ser 39 según dijiste)
-    const totalProjects = realRepos.length;
+    // Usar el total de repositorios públicos del usuario directamente desde la API
+    const totalProjects = user.public_repos;
 
     // Obtener tecnologías únicas utilizadas - basándome en tu imagen y lenguajes principales
     const technologies = new Set<string>();
@@ -234,7 +267,7 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
       technologies.add("CSS");
     }
 
-    // Calcular estrellas y forks totales de repositorios reales
+    // Calcular estrellas y forks totales de repositorios obtenidos (muestra representativa)
     const totalStars = realRepos.reduce(
       (sum, repo) => sum + repo.stargazers_count,
       0
@@ -244,20 +277,31 @@ export async function fetchGitHubStats(username: string): Promise<GitHubStats> {
       0
     );
 
-    console.log(`GitHub Stats for ${username}:`);
-    console.log(`- Total repos found: ${allRepos.length}`);
-    console.log(`- Real repos (filtered): ${totalProjects}`);
-    console.log(`- First repo date: ${oldestRepoDate.toDateString()}`);
-    console.log(`- Years of experience: ${yearsOfExperience}`);
-    console.log(`- Technologies: ${Array.from(technologies).join(", ")}`);
-
-    return {
+    const result = {
       yearsOfExperience,
-      totalProjects,
+      totalProjects, // Usar el número real de repos públicos del usuario
       technologiesUsed: Array.from(technologies).slice(0, 20), // Mostrar hasta 20 tecnologías
       totalStars,
       totalForks,
     };
+
+    console.log(`GitHub Stats for ${username}:`);
+    console.log(`- API calls made: 2 (repos + user)`); // Reducido significativamente
+    console.log(`- Repos analyzed: ${realRepos.length}`);
+    console.log(`- Total public repos: ${totalProjects}`);
+    console.log(`- First repo date: ${oldestRepoDate.toDateString()}`);
+    console.log(`- Years of experience: ${yearsOfExperience}`);
+    console.log(`- Technologies: ${Array.from(technologies).join(", ")}`);
+
+    // Guardar en caché - solo en el cliente
+    if (typeof window !== 'undefined' && window.localStorage) {
+      localStorage.setItem(cacheKey, JSON.stringify({
+        data: result,
+        timestamp: Date.now()
+      }));
+    }
+
+    return result;
   } catch (error) {
     console.error("Error fetching GitHub stats:", error);
 
