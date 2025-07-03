@@ -8,7 +8,7 @@ export const translations = {
       contact: "Contacto",
     },
     home: {
-      welcome: "Bienvenido al Reino Digital",
+      welcome: "Bienvenido al Reino KiriDev",
       subtitle: "Frontend Developer en progreso hacia el Backend",
       description:
         "Desarrollador frontend especializado en crear experiencias web inmersivas y funcionales. Actualmente expandiendo mis habilidades hacia el desarrollo backend.",
@@ -46,7 +46,8 @@ export const translations = {
       download: "Descargar CV",
       summary: {
         title: "Resumen Profesional",
-        description: "Desarrollador frontend apasionado con experiencia en tecnologías modernas, enfocado en la creación de interfaces de usuario excepcionales y experiencias web inmersivas. Actualmente expandiendo conocimientos hacia el desarrollo backend.",
+        description:
+          "Desarrollador frontend apasionado con experiencia en tecnologías modernas, enfocado en la creación de interfaces de usuario excepcionales y experiencias web inmersivas. Actualmente expandiendo conocimientos hacia el desarrollo backend.",
       },
       experience: {
         title: "Experiencia Profesional",
@@ -64,7 +65,6 @@ export const translations = {
         experience: "Experiencia Profesional",
         education: "Formación Académica",
         skills: "Competencias Técnicas",
-        certifications: "Certificaciones",
       },
     },
     contact: {
@@ -91,7 +91,8 @@ export const translations = {
       },
       response: {
         title: "Tiempo de Respuesta",
-        description: "Normalmente respondo en un plazo de 24-48 horas. Para proyectos urgentes, puedes contactarme directamente por email.",
+        description:
+          "Normalmente respondo en un plazo de 24-48 horas. Para proyectos urgentes, puedes contactarme directamente por email.",
       },
       success: "Mensaje enviado exitosamente",
       error: "Error al enviar el mensaje",
@@ -150,7 +151,8 @@ export const translations = {
       download: "Download Resume",
       summary: {
         title: "Professional Summary",
-        description: "Passionate frontend developer with experience in modern technologies, focused on creating exceptional user interfaces and immersive web experiences. Currently expanding knowledge towards backend development.",
+        description:
+          "Passionate frontend developer with experience in modern technologies, focused on creating exceptional user interfaces and immersive web experiences. Currently expanding knowledge towards backend development.",
       },
       experience: {
         title: "Professional Experience",
@@ -168,7 +170,6 @@ export const translations = {
         experience: "Professional Experience",
         education: "Academic Formation",
         skills: "Technical Skills",
-        certifications: "Certifications",
       },
     },
     contact: {
@@ -195,7 +196,8 @@ export const translations = {
       },
       response: {
         title: "Response Time",
-        description: "I usually respond within 24-48 hours. For urgent projects, you can contact me directly by email.",
+        description:
+          "I usually respond within 24-48 hours. For urgent projects, you can contact me directly by email.",
       },
       success: "Message sent successfully",
       error: "Error sending message",

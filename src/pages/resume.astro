@@ -199,7 +199,6 @@ const { t } = useTranslation("es");
                     </div>
                   ))
                 }
-                }
               </div>
             </div>
 
@@ -245,60 +244,6 @@ const { t } = useTranslation("es");
             </div>
           </div>
         </section>
-
-        <!-- Certifications -->
-        <section class="mmorpg-card">
-          <h2
-            class="text-3xl font-cinzel font-bold text-green-400 mb-8 flex items-center"
-          >
-            <div class="text-green-400 mr-4" set:html={getIcon("trophy")} />
-            {t.resume.sections.certifications}
-          </h2>
-
-          <div class="grid md:grid-cols-2 gap-6">
-            {
-              [
-                {
-                  name: "JavaScript Algorithms and Data Structures",
-                  issuer: "freeCodeCamp",
-                  year: "2023",
-                },
-                {
-                  name: "Responsive Web Design",
-                  issuer: "freeCodeCamp",
-                  year: "2022",
-                },
-                {
-                  name: "React - The Complete Guide",
-                  issuer: "Udemy",
-                  year: "2023",
-                },
-                {
-                  name: "Modern JavaScript ES6+",
-                  issuer: "Platzi",
-                  year: "2022",
-                },
-              ].map((cert) => (
-                <div class="flex items-center space-x-4 p-4 bg-slate-700/50 rounded-lg border border-green-400/30">
-                  <div class="w-12 h-12 bg-gradient-to-br from-green-400 to-emerald-400 rounded-lg flex items-center justify-center">
-                    <div
-                      class="w-4 h-4 text-yellow-600"
-                      set:html={getIcon("trophy")}
-                    />
-                  </div>
-                  <div>
-                    <h3 class="font-orbitron font-bold text-green-400 text-sm">
-                      {cert.name}
-                    </h3>
-                    <p class="text-gray-400 text-xs">
-                      {cert.issuer} • {cert.year}
-                    </p>
-                  </div>
-                </div>
-              ))
-            }
-          </div>
-        </section>
       </div>
     </div>
   </main>
@@ -327,15 +272,28 @@ const { t } = useTranslation("es");
 
     // Animate skill bars
     const skillBars = document.querySelectorAll(".skill-bar");
+    const skillsSection = document.querySelector("section:last-child"); // La sección de skills
+    
     skillBars.forEach((bar, index) => {
-      gsap.from(bar, {
+      const element = bar as HTMLElement;
+      
+      // Get the target width from the style attribute
+      const styleAttr = element.getAttribute('style');
+      const widthMatch = styleAttr?.match(/width:\s*(\d+)%/);
+      const targetWidth = widthMatch ? widthMatch[1] + '%' : '0%';
+      
+      // Set initial width to 0
+      gsap.set(element, { width: "0%" });
+      
+      // Animate to target width when skills section comes into view
+      gsap.to(element, {
         duration: 1.5,
-        width: "0%",
+        width: targetWidth,
         ease: "power2.out",
         delay: index * 0.1,
         scrollTrigger: {
-          trigger: bar,
-          start: "top 80%",
+          trigger: skillsSection,
+          start: "top 70%",
           toggleActions: "play none none reverse",
         },
       });
