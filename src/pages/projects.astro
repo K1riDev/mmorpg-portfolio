@@ -2,8 +2,8 @@
 import Layout from '@/layouts/Layout.astro';
 import Navbar from '@/components/Navbar.astro';
 import { useTranslation } from '@/i18n/utils';
-import { fetchGitHubRepos, getLanguageColor, getLanguageIcon, type GitHubRepo } from '@/lib/github';
-import { getIcon } from '@/lib/icons';
+import { fetchGitHubRepos, type GitHubRepo } from '@/lib/github';
+import { getIcon, getLanguageColor, getLanguageIcon } from '@/lib/icons';
 
 const { t } = useTranslation('es');
 
