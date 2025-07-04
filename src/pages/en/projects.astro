@@ -10,8 +10,10 @@ const { t } = useTranslation('en');
 // Obtener repositorios de GitHub con fallback
 async function getGitHubRepos(): Promise<GitHubRepo[]> {
   try {
+    console.log('Starting GitHub repos fetch for projects page (EN)');
     // Username real de GitHub
     const githubRepos = await fetchGitHubRepos('K1riDev');
+    console.log(`Fetched ${githubRepos.length} GitHub repos`);
 
     // Agregar proyectos privados destacados
     const privateProjects: GitHubRepo[] = [
@@ -47,16 +49,26 @@ async function getGitHubRepos(): Promise<GitHubRepo[]> {
 
     // Combinar repositorios públicos y privados, luego ordenar: privados primero, luego por estrellas
     const allRepos = [...githubRepos, ...privateProjects];
+    console.log(`Total repos (including private): ${allRepos.length}`);
+
     // Filtrar repositorio del perfil (README del usuario)
     const filteredRepos = allRepos.filter(repo => repo.name !== 'K1riDev');
-    return filteredRepos.sort((a, b) => {
+    console.log(`Filtered repos (excluding K1riDev profile): ${filteredRepos.length}`);
+
+    const finalRepos = filteredRepos.sort((a, b) => {
       // Los proyectos privados van primero
       if (a.private && !b.private) return -1;
       if (!a.private && b.private) return 1;
       // Si ambos son del mismo tipo, ordenar por estrellas
       return b.stargazers_count - a.stargazers_count;
     });
+
+    console.log(`Final repos count: ${finalRepos.length}`);
+    console.log('Final repo names:', finalRepos.map(r => r.name));
+
+    return finalRepos;
   } catch (error) {
+    console.error('Error in getGitHubRepos (EN):', error);
     // Fallback con proyectos reales de K1riDev
     return [
       {

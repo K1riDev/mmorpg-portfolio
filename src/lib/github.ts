@@ -47,7 +47,11 @@ async function fetchGitHubAPI(url: string): Promise<Response> {
     headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
   }
 
-  const response = await fetch(url, { headers });
+  const response = await fetch(url, {
+    headers,
+    // Configuración para mejorar compatibilidad con Cloudflare
+    signal: AbortSignal.timeout(10000), // Timeout de 10 segundos
+  });
 
   // Verificar rate limiting
   const remaining = response.headers.get("X-RateLimit-Remaining");
@@ -68,20 +72,74 @@ export async function fetchGitHubRepos(
   username: string
 ): Promise<GitHubRepo[]> {
   try {
+    console.log(`Fetching GitHub repos for user: ${username}`);
     const response = await fetchGitHubAPI(
       `https://api.github.com/users/${username}/repos?sort=stars&per_page=50&direction=desc`
     );
+    console.log(`GitHub API response status: ${response.status}`);
+
     if (!response.ok) {
-      throw new Error("Failed to fetch repositories");
+      throw new Error(
+        `Failed to fetch repositories. Status: ${response.status}`
+      );
     }
+
     const repos: GitHubRepo[] = await response.json();
+    console.log(`Total repos fetched: ${repos.length}`);
+
     const filteredRepos = repos.filter((repo) => !repo.fork);
+    console.log(`Non-fork repos: ${filteredRepos.length}`);
+    console.log(
+      "Repo names:",
+      filteredRepos.map((r) => r.name)
+    );
+
     // Ya viene ordenado por estrellas desde la API
     return filteredRepos;
   } catch (error) {
     console.error("Error fetching GitHub repos:", error);
-    // Fallback a proyectos reales del usuario K1riDev
+    console.log(
+      "Using fallback data - this indicates an API issue in production"
+    );
+
+    // Fallback completo con todos los proyectos reales de K1riDev
     return [
+      {
+        id: 4,
+        name: "codextreme-web",
+        description: "Modern web development agency website",
+        html_url: "https://github.com/K1riDev/codextreme-web",
+        homepage: null,
+        language: "Astro",
+        stargazers_count: 15,
+        forks_count: 0,
+        fork: false,
+        topics: ["astro", "web-agency", "modern"],
+      },
+      {
+        id: 15,
+        name: "kc_adminV2",
+        description: "Advanced admin system for game servers",
+        html_url: "https://github.com/K1riDev/kc_adminV2",
+        homepage: null,
+        language: "Lua",
+        stargazers_count: 7,
+        forks_count: 0,
+        fork: false,
+        topics: ["lua", "admin-system", "gaming"],
+      },
+      {
+        id: 14,
+        name: "Arctic-Multipurpose-Bot",
+        description: "Multipurpose Discord bot with various features",
+        html_url: "https://github.com/K1riDev/Arctic-Multipurpose-Bot",
+        homepage: null,
+        language: "JavaScript",
+        stargazers_count: 2,
+        forks_count: 0,
+        fork: false,
+        topics: ["discord-bot", "javascript", "multipurpose"],
+      },
       {
         id: 1,
         name: "mmorpg-portfolio",
@@ -93,6 +151,102 @@ export async function fetchGitHubRepos(
         forks_count: 0,
         fork: false,
         topics: ["portfolio", "astro", "typescript", "tailwind"],
+      },
+      {
+        id: 2,
+        name: "last_oasis_server_guide_es",
+        description: "Complete guide for Last Oasis private servers in Spanish",
+        html_url: "https://github.com/K1riDev/last_oasis_server_guide_es",
+        homepage: null,
+        language: "HTML",
+        stargazers_count: 0,
+        forks_count: 0,
+        fork: false,
+        topics: ["guide", "gaming", "spanish", "last-oasis"],
+      },
+      {
+        id: 5,
+        name: "VIPPlaytime",
+        description: "VIP system with playtime tracking for game servers",
+        html_url: "https://github.com/K1riDev/VIPPlaytime",
+        homepage: null,
+        language: "C#",
+        stargazers_count: 0,
+        forks_count: 0,
+        fork: false,
+        topics: ["csharp", "vip-system", "gaming"],
+      },
+      {
+        id: 6,
+        name: "codeflow-portfolio",
+        description: "Previous version of my portfolio website",
+        html_url: "https://github.com/K1riDev/codeflow-portfolio",
+        homepage: null,
+        language: "TypeScript",
+        stargazers_count: 0,
+        forks_count: 0,
+        fork: false,
+        topics: ["portfolio", "typescript", "react"],
+      },
+      {
+        id: 7,
+        name: "CodePortfolio",
+        description: "Another portfolio iteration",
+        html_url: "https://github.com/K1riDev/CodePortfolio",
+        homepage: null,
+        language: "JavaScript",
+        stargazers_count: 0,
+        forks_count: 0,
+        fork: false,
+        topics: ["portfolio", "javascript"],
+      },
+      {
+        id: 9,
+        name: "Apolo-GYM",
+        description: "Gym management website project",
+        html_url: "https://github.com/K1riDev/Apolo-GYM",
+        homepage: null,
+        language: "CSS",
+        stargazers_count: 0,
+        forks_count: 0,
+        fork: false,
+        topics: ["css", "gym", "website"],
+      },
+      {
+        id: 10,
+        name: "React-Portfolio",
+        description: "Portfolio built with React and TypeScript",
+        html_url: "https://github.com/K1riDev/React-Portfolio",
+        homepage: null,
+        language: "TypeScript",
+        stargazers_count: 0,
+        forks_count: 0,
+        fork: false,
+        topics: ["react", "typescript", "portfolio"],
+      },
+      {
+        id: 12,
+        name: "Nuevo-Portfolio",
+        description: "New portfolio iteration in JavaScript",
+        html_url: "https://github.com/K1riDev/Nuevo-Portfolio",
+        homepage: null,
+        language: "JavaScript",
+        stargazers_count: 0,
+        forks_count: 0,
+        fork: false,
+        topics: ["javascript", "portfolio"],
+      },
+      {
+        id: 13,
+        name: "ArcticOficcial",
+        description: "Official website for Arctic bot",
+        html_url: "https://github.com/K1riDev/ArcticOficcial",
+        homepage: null,
+        language: "JavaScript",
+        stargazers_count: 0,
+        forks_count: 0,
+        fork: false,
+        topics: ["javascript", "website", "discord-bot"],
       },
     ];
   }
